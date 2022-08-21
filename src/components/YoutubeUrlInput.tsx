@@ -10,17 +10,17 @@ function YoutubeUrlInput({
   setYoutubePlaylistUrl,
 }: YoutubeUrlInputProps): JSX.Element {
   return (
-    <form onSubmit={() => setPlaylistSent(true)}>
+    <>
       <input
         type="text"
         placeholder="Enter Youtube Playlist URL"
         value={youtubePlaylistUrl}
         onChange={(e) => setYoutubePlaylistUrl(e.target.value)}
       />
-      <button type="submit" value="Submit">
+      <button type="button" onClick={() => setPlaylistSent(true)}>
         Submit
       </button>
-    </form>
+    </>
   );
 }
 

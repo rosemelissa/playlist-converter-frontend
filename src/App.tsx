@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ConverterResults from "./components/ConverterResults";
 import SpotifySignIn from "./components/SpotifySignIn";
+import YoutubeSearchPage from "./components/YoutubeSearchPage";
 import YoutubeUrlInput from "./components/YoutubeUrlInput";
 
 function App(): JSX.Element {
@@ -13,14 +14,13 @@ function App(): JSX.Element {
       {!spotifyAuthorised && (
         <SpotifySignIn setSpotifyAuthorised={setSpotifyAuthorised} />
       )}
-      {spotifyAuthorised && !playlistSent && (
-        <YoutubeUrlInput
-          setPlaylistSent={setPlaylistSent}
-          youtubePlaylistUrl={youtubePlaylistUrl}
-          setYoutubePlaylistUrl={setYoutubePlaylistUrl}
-        />
+      {spotifyAuthorised && (
+        <YoutubeSearchPage playlistSent={playlistSent} setPlaylistSent={setPlaylistSent}
+        youtubePlaylistUrl={youtubePlaylistUrl}
+        setYoutubePlaylistUrl={setYoutubePlaylistUrl}/>
+        
       )}
-      {spotifyAuthorised && playlistSent && (
+      {!spotifyAuthorised && playlistSent && (
         <ConverterResults
           setPlaylistSent={setPlaylistSent}
           youtubePlaylistUrl={youtubePlaylistUrl}
