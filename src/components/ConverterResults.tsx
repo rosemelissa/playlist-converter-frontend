@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import getPlaylistIdFromUrl from "../utils/getPlaylistIdFromUrl";
+import getArrayOfPlaylistItemIds from "../utils/getArrayOfPlaylistItemIds"
+import { TitleAndImg } from "../utils/interfaces";
 
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,6 +14,7 @@ function ConverterResults({
   youtubePlaylistUrl,
   setYoutubePlaylistUrl,
 }: ConverterResultsProps): JSX.Element {
+    const [playlistItems, setPlaylistItems] = useState<TitleAndImg[]>([]);
   const YOUR_API_KEY = "AIzaSyDV3ZLZ_jJ2D_NMSoaLC2alJ9BtWGMMxEw";
   const playlistId = getPlaylistIdFromUrl(youtubePlaylistUrl);
 
@@ -19,7 +22,8 @@ function ConverterResults({
     fetch(
       `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=${playlistId}&key=${YOUR_API_KEY}`
     ).then((response) =>
-      response.json().then((jsonBody) => console.log(jsonBody))
+      response.json()
+      .then((jsonBody) => setPlaylistItems(getArrayOfPlaylistItemIds(jsonBody)))
     );
   }, []);
 
@@ -34,6 +38,7 @@ function ConverterResults({
       <button type="button" onClick={() => setPlaylistSent(false)}>
         Do another playlist
       </button>
+      {playlistItems.map((item, i) => <h3 key={i}>{item.title}, {item.img}</h3>)}
     </>
   );
 }
