@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import getPlaylistIdFromUrl from "../utils/getPlaylistIdFromUrl";
 import getArrayOfPlaylistItemIds from "../utils/getArrayOfPlaylistItemIds"
 import { TitleAndImg } from "../utils/interfaces";
+import YoutubeVideoListing from "./YoutubeVideoListing";
 
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,7 +39,7 @@ function ConverterResults({
       <button type="button" onClick={() => setPlaylistSent(false)}>
         Do another playlist
       </button>
-      {playlistItems.map((item, i) => <h3 key={i}>{item.title}, {item.img}</h3>)}
+      {playlistItems.map((item, i) => <YoutubeVideoListing key={i} title={item.title} img={item.img}/>)}
     </>
   );
 }
