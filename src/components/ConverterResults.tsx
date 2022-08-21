@@ -1,9 +1,3 @@
-import { useEffect, useState } from "react";
-import getPlaylistIdFromUrl from "../utils/getPlaylistIdFromUrl";
-import getArrayOfPlaylistItemIds from "../utils/getArrayOfPlaylistItemIds"
-import { TitleAndImg } from "../utils/interfaces";
-import YoutubeVideoListing from "./YoutubeVideoListing";
-
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
   youtubePlaylistUrl: string;

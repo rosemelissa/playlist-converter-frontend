@@ -2,7 +2,6 @@ import { useState } from "react";
 import ConverterResults from "./components/ConverterResults";
 import SpotifySignIn from "./components/SpotifySignIn";
 import YoutubeSearchPage from "./components/YoutubeSearchPage";
-import YoutubeUrlInput from "./components/YoutubeUrlInput";
 
 function App(): JSX.Element {
   const [spotifyAuthorised, setSpotifyAuthorised] = useState<boolean>(false);
