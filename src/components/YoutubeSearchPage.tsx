@@ -10,15 +10,15 @@ interface YoutubeSearchPageProps {
     setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
     youtubePlaylistUrl: string;
     setYoutubePlaylistUrl: React.Dispatch<React.SetStateAction<string>>;
+    setPlaylistSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
   }
 
 function YoutubeSearchPage({playlistSent, setPlaylistSent,
     youtubePlaylistUrl,
-    setYoutubePlaylistUrl,}: YoutubeSearchPageProps): JSX.Element {
+    setYoutubePlaylistUrl, setPlaylistSubmitted}: YoutubeSearchPageProps): JSX.Element {
         const [playlistItems, setPlaylistItems] = useState<TitleAndImg[]>([]);
   const YOUR_API_KEY = "AIzaSyDV3ZLZ_jJ2D_NMSoaLC2alJ9BtWGMMxEw";
   
-
   useEffect(() => {
     if (playlistSent) {
         const playlistId = getPlaylistIdFromUrl(youtubePlaylistUrl);
@@ -38,7 +38,11 @@ function YoutubeSearchPage({playlistSent, setPlaylistSent,
           setPlaylistSent={setPlaylistSent}
           youtubePlaylistUrl={youtubePlaylistUrl}
           setYoutubePlaylistUrl={setYoutubePlaylistUrl}/>
-        {playlistItems.length > 0 && <YoutubePlaylistListing playlistItems={playlistItems}/>}
+        {playlistItems.length > 0 && 
+        <>
+        <button type='button' onClick={() => setPlaylistSubmitted(true)}>Use this playlist</button>
+        <YoutubePlaylistListing playlistItems={playlistItems}/>
+        </>}
         </>
 
     )

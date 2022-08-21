@@ -15,19 +15,7 @@ function ConverterResults({
   youtubePlaylistUrl,
   setYoutubePlaylistUrl,
 }: ConverterResultsProps): JSX.Element {
-    const [playlistItems, setPlaylistItems] = useState<TitleAndImg[]>([]);
-  const YOUR_API_KEY = "AIzaSyDV3ZLZ_jJ2D_NMSoaLC2alJ9BtWGMMxEw";
-  const playlistId = getPlaylistIdFromUrl(youtubePlaylistUrl);
-
-  useEffect(() => {
-    fetch(
-      `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=${playlistId}&key=${YOUR_API_KEY}`
-    ).then((response) =>
-      response.json()
-      .then((jsonBody) => setPlaylistItems(getArrayOfPlaylistItemIds(jsonBody)))
-    );
-  }, []);
-
+    
   return (
     <>
       <h1>Spotify playlist link:</h1>
@@ -39,7 +27,6 @@ function ConverterResults({
       <button type="button" onClick={() => setPlaylistSent(false)}>
         Do another playlist
       </button>
-      {playlistItems.map((item, i) => <YoutubeVideoListing key={i} title={item.title} img={item.img}/>)}
     </>
   );
 }

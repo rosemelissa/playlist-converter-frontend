@@ -7,6 +7,7 @@ import YoutubeUrlInput from "./components/YoutubeUrlInput";
 function App(): JSX.Element {
   const [spotifyAuthorised, setSpotifyAuthorised] = useState<boolean>(false);
   const [playlistSent, setPlaylistSent] = useState<boolean>(false);
+  const [playlistSubmitted, setPlaylistSubmitted] = useState<boolean>(false);
   const [youtubePlaylistUrl, setYoutubePlaylistUrl] = useState<string>("");
 
   return (
@@ -14,13 +15,13 @@ function App(): JSX.Element {
       {!spotifyAuthorised && (
         <SpotifySignIn setSpotifyAuthorised={setSpotifyAuthorised} />
       )}
-      {spotifyAuthorised && (
+      {spotifyAuthorised && !playlistSubmitted && (
         <YoutubeSearchPage playlistSent={playlistSent} setPlaylistSent={setPlaylistSent}
         youtubePlaylistUrl={youtubePlaylistUrl}
-        setYoutubePlaylistUrl={setYoutubePlaylistUrl}/>
+        setYoutubePlaylistUrl={setYoutubePlaylistUrl} setPlaylistSubmitted={setPlaylistSubmitted}/>
         
       )}
-      {!spotifyAuthorised && playlistSent && (
+      {spotifyAuthorised && playlistSubmitted && (
         <ConverterResults
           setPlaylistSent={setPlaylistSent}
           youtubePlaylistUrl={youtubePlaylistUrl}
