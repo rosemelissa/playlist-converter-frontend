@@ -21,7 +21,7 @@ async function requestAuthorization(): Promise<void> {
     authorizationUrl += `&response_type=code`;
     authorizationUrl += `&redirect_uri=${encodeURI(baseUrl)}`;
     authorizationUrl += `&show_dialog=true`;
-    authorizationUrl += `&scope=ugc-image-upload&playlist-modify-public&playlist-modify-private`;
+    authorizationUrl += `&scope=ugc-image-upload playlist-modify-public playlist-modify-private`;
     authorizationUrl += `&code_challenge_method=S256`;
     authorizationUrl += `&code_challenge=${codeChallenge}`
 
