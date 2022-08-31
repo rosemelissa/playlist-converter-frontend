@@ -31,21 +31,26 @@ function SpotifySignIn({
         } else {
           console.log("authorization is null")
         }
-      } else {
-        await requestAuthorization();
       }
   }
     handlePageLoad();
   }, [])
+
+  const handleLogin =  async() => {
+    await requestAuthorization();
+  }
     
     
 
   
 
   return (
-    <p>
-      Log in to Spotify
-    </p>
+    <>
+            <h1>Welcome to the Youtube to Spotify converter!</h1>
+            <p> Simply upload a Youtube playlist url and convert it into a Spotify playlist</p>
+            <p>To get started, log in with Spotify</p>
+            <button type="button" onClick={handleLogin}>Log into Spotify</button>
+        </>
   );
 }
 
