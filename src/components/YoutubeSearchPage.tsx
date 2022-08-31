@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import getPlaylistIdFromUrl from "../utils/getPlaylistIdFromUrl";
-import { ISpotifySearchResponse, ISpotifyTrack, TitleAndImg } from "../utils/interfaces";
+import { ISpotifySearchResponse, ISpotifyTrack, IYoutubeAndSpotify, TitleAndImg } from "../utils/interfaces";
 import YoutubePlaylistListing from "./YoutubePlaylistListing";
 import YoutubeUrlInput from "./YoutubeUrlInput";
 import getArrayOfPlaylistItemIds from "../utils/getArrayOfPlaylistItemIds"
@@ -12,8 +12,8 @@ interface YoutubeSearchPageProps {
     youtubePlaylistUrl: string;
     setYoutubePlaylistUrl: React.Dispatch<React.SetStateAction<string>>;
     setPlaylistSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
-    spotifySearchResults: (ISpotifyTrack|undefined)[];
-    setSpotifySearchResults: React.Dispatch<React.SetStateAction<(ISpotifyTrack|undefined)[]>>;
+    spotifySearchResults: IYoutubeAndSpotify[];
+    setSpotifySearchResults: React.Dispatch<React.SetStateAction<IYoutubeAndSpotify[]>>;
   }
 
 function YoutubeSearchPage({playlistSent, setPlaylistSent,
@@ -43,14 +43,14 @@ function YoutubeSearchPage({playlistSent, setPlaylistSent,
         "Content-Type": "application/json",
       }
     };
-    const resultsOfThisSearch: (ISpotifyTrack|undefined)[] = [];
+    const resultsOfThisSearch: IYoutubeAndSpotify[] = [];
     for (const item of playlistItems) {
       try{ const searchResults: ISpotifySearchResponse = await axios.get(`https://api.spotify.com/v1/search?q=name:${item.title}&type=track&limit=1`, headers);
       console.log(searchResults.data.tracks.items)
-      resultsOfThisSearch.push(searchResults.data.tracks.items[0])
+      resultsOfThisSearch.push({youtube: item, spotify: searchResults.data.tracks.items[0]})
     } catch(error) {
       console.error(error);
-      resultsOfThisSearch.push(undefined)
+      resultsOfThisSearch.push({youtube: item, spotify: null})
     }
     }
     console.log("resultsofthissearch " + resultsOfThisSearch)

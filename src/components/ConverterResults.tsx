@@ -1,12 +1,12 @@
-import { ISpotifyTrack } from "../utils/interfaces";
+import { ISpotifyTrack, IYoutubeAndSpotify } from "../utils/interfaces";
 import SpotifyTrackListing from "./SpotifyTrackListing";
 
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
   youtubePlaylistUrl: string;
   setYoutubePlaylistUrl: React.Dispatch<React.SetStateAction<string>>;
-  spotifySearchResults: (ISpotifyTrack|undefined)[];
-  setSpotifySearchResults: React.Dispatch<React.SetStateAction<(ISpotifyTrack|undefined)[]>>;
+  spotifySearchResults: IYoutubeAndSpotify[];
+  setSpotifySearchResults: React.Dispatch<React.SetStateAction<IYoutubeAndSpotify[]>>;
 }
 
 function ConverterResults({

@@ -130,3 +130,8 @@ export interface ISpotifyTrack {
   type: string;
   uri: string;
 }
+
+export interface IYoutubeAndSpotify {
+  youtube: TitleAndImg;
+  spotify: ISpotifyTrack|null;
+}
