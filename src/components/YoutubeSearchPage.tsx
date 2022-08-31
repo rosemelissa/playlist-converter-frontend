@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import getPlaylistIdFromUrl from "../utils/getPlaylistIdFromUrl";
-import { TitleAndImg } from "../utils/interfaces";
+import { ISpotifySearchData, ISpotifySearchResponse, ISpotifyTrack, TitleAndImg } from "../utils/interfaces";
 import YoutubePlaylistListing from "./YoutubePlaylistListing";
 import YoutubeUrlInput from "./YoutubeUrlInput";
 import getArrayOfPlaylistItemIds from "../utils/getArrayOfPlaylistItemIds"
+import axios from "axios";
 
 interface YoutubeSearchPageProps {
     playlistSent: boolean;
@@ -11,11 +12,13 @@ interface YoutubeSearchPageProps {
     youtubePlaylistUrl: string;
     setYoutubePlaylistUrl: React.Dispatch<React.SetStateAction<string>>;
     setPlaylistSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+    spotifySearchResults: (ISpotifyTrack|undefined)[];
+    setSpotifySearchResults: React.Dispatch<React.SetStateAction<(ISpotifyTrack|undefined)[]>>;
   }
 
 function YoutubeSearchPage({playlistSent, setPlaylistSent,
     youtubePlaylistUrl,
-    setYoutubePlaylistUrl, setPlaylistSubmitted}: YoutubeSearchPageProps): JSX.Element {
+    setYoutubePlaylistUrl, setPlaylistSubmitted, spotifySearchResults, setSpotifySearchResults}: YoutubeSearchPageProps): JSX.Element {
         const [playlistItems, setPlaylistItems] = useState<TitleAndImg[]>([]);
   const YOUR_API_KEY = "AIzaSyDV3ZLZ_jJ2D_NMSoaLC2alJ9BtWGMMxEw";
   
@@ -32,6 +35,34 @@ function YoutubeSearchPage({playlistSent, setPlaylistSent,
     }
   }, [playlistSent]);
 
+  const submitPlaylist = async () => {
+    const access_token = localStorage.getItem('access_token')
+    const headers = {
+      headers: {
+        "Authorization": `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      }
+    };
+    const resultsOfThisSearch: (ISpotifyTrack|undefined)[] = [];
+    for (const item of playlistItems) {
+      try{ const searchResults: ISpotifySearchResponse = await axios.get(`https://api.spotify.com/v1/search?q=name:${item.title}&type=track&limit=1`, headers);
+      console.log(searchResults.data.tracks.items)
+      resultsOfThisSearch.push(searchResults.data.tracks.items[0])
+    } catch(error) {
+      console.error(error);
+      resultsOfThisSearch.push(undefined)
+    }
+    }
+    console.log("resultsofthissearch " + resultsOfThisSearch)
+    setSpotifySearchResults([...resultsOfThisSearch])
+    //for each playlist item:
+      //search spotify for the song
+        //if theres a result: put the result in an array of spotifyResults with type {id, title, artists, length, picture, and then top 4 other results maybe}
+        //if there isn't a result: put playlist item in array of failedSearches
+
+    //setPlaylistSubmitted(true)
+  }
+
     return(
         <>
         <YoutubeUrlInput
@@ -40,7 +71,7 @@ function YoutubeSearchPage({playlistSent, setPlaylistSent,
           setYoutubePlaylistUrl={setYoutubePlaylistUrl}/>
         {playlistItems.length > 0 && 
         <>
-        <button type='button' onClick={() => setPlaylistSubmitted(true)}>Use this playlist</button>
+        <button type='button' onClick={submitPlaylist}>Use this playlist</button>
         <YoutubePlaylistListing playlistItems={playlistItems}/>
         </>}
         </>

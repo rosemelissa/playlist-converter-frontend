@@ -17,7 +17,8 @@ function SpotifySignIn({
         const authorization = getAuthorization();
         if (authorization) {
           if (authorization.code !== "no code") {
-            requestTokens(authorization.code);
+            await requestTokens(authorization.code);
+            setSpotifyAuthorised(true);
           } else {
             console.log(authorization.error);
           }
@@ -31,7 +32,7 @@ function SpotifySignIn({
     handlePageLoad();
   }, [])
     
-    //setSpotifyAuthorised(true)
+    
 
   
 
