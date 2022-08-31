@@ -55,12 +55,7 @@ function YoutubeSearchPage({playlistSent, setPlaylistSent,
     }
     console.log("resultsofthissearch " + resultsOfThisSearch)
     setSpotifySearchResults([...resultsOfThisSearch])
-    //for each playlist item:
-      //search spotify for the song
-        //if theres a result: put the result in an array of spotifyResults with type {id, title, artists, length, picture, and then top 4 other results maybe}
-        //if there isn't a result: put playlist item in array of failedSearches
-
-    //setPlaylistSubmitted(true)
+    setPlaylistSubmitted(true)
   }
 
     return(

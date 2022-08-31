@@ -1,4 +1,5 @@
 import { ISpotifySearchData, ISpotifyTrack } from "../utils/interfaces";
+import SpotifyTrackListing from "./SpotifyTrackListing";
 
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,6 +17,8 @@ function ConverterResults({
     
   return (
     <>
+      <h1>Results of the search:</h1>
+      {spotifySearchResults.map((searchResult, i) => <SpotifyTrackListing thisTrack={searchResult} key={i}/>)}
       <h1>Spotify playlist link:</h1>
       <p>Link that needs to be a clickable URL</p>
       <h2>These songs were skipped:</h2>
