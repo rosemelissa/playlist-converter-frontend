@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
-import { ISpotifyTrack, IYoutubeAndSpotify } from "../utils/interfaces";
+import { ISpotifyPlaylistResponse, ISpotifyTrack, IYoutubeAndSpotify } from "../utils/interfaces";
 import SpotifyTrackListing from "./SpotifyTrackListing";
+import addTracksToPlaylist from "../utils/addTracksToPlaylist";
 
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,7 +34,14 @@ function ConverterResults({
       "description": playlistDescription,
       "public": true,
     }
-    await axios.post(`https://api.spotify.com/v1/users/${userID}/playlists`, data, headers)
+    try {
+      const response: ISpotifyPlaylistResponse = await axios.post(`https://api.spotify.com/v1/users/${userID}/playlists`, data, headers);
+      console.log(response);
+      const playlistID: string = response.data.id;
+      await addTracksToPlaylist(spotifySearchResults, playlistID);
+    } catch (error) {
+      console.error(error);
+    }
   }
     
   return (
@@ -53,3 +61,5 @@ function ConverterResults({
 }
 
 export default ConverterResults;
+
+

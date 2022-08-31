@@ -172,3 +172,30 @@ export interface IUser {
   type: string;
   uri: string;
 }
+
+export interface ISpotifyPlaylistResponse {
+  config: {};
+  data: ISpotifyPlaylist;
+  headers: {};
+  request: {};
+  status: number;
+  statusText: string;
+}
+
+export interface ISpotifyPlaylist {
+  collaborative: boolean;
+  description: string;
+  external_urls: {spotify: string}
+  followers: {}
+  href: string;
+  id: string;
+  images: any[]
+  name: string;
+  owner: {}
+  primary_color: null;
+  public: boolean;
+  snapshot_id: string;
+  tracks: {}
+  type: string;
+  uri: string;
+}
