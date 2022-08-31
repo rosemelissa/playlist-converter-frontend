@@ -6,8 +6,8 @@ dotenv.config();
  * Uses the redirect code from requestAuthorization to request access and refresh tokens for the Spotify API
  */
 async function requestTokens(code: string): Promise<void> {
-    const CLIENTID = "871f39857438482f9d88bddd3ec583e4";
-    const CLIENTSECRET = "320a7957d93240beaa26bfbb04171487";
+    const CLIENTID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+    const CLIENTSECRET = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
     const baseUrl = "http://localhost:3000";
 
     const code_verifier = localStorage.getItem('code_verifier');

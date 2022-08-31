@@ -6,6 +6,7 @@ import YoutubeUrlInput from "./YoutubeUrlInput";
 import getArrayOfPlaylistItemIds from "../utils/getArrayOfPlaylistItemIds"
 import axios from "axios";
 
+
 interface YoutubeSearchPageProps {
     playlistSent: boolean;
     setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +21,9 @@ function YoutubeSearchPage({playlistSent, setPlaylistSent,
     youtubePlaylistUrl,
     setYoutubePlaylistUrl, setPlaylistSubmitted, spotifySearchResults, setSpotifySearchResults}: YoutubeSearchPageProps): JSX.Element {
         const [playlistItems, setPlaylistItems] = useState<TitleAndImg[]>([]);
-  const YOUR_API_KEY = "AIzaSyDV3ZLZ_jJ2D_NMSoaLC2alJ9BtWGMMxEw";
+
+         
+  const YOUR_API_KEY = process.env.REACT_APP_YT_API_KEY;
   
   useEffect(() => {
     if (playlistSent) {
