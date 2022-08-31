@@ -2,13 +2,16 @@ import { useEffect } from "react";
 import getAuthorization from "../utils/getAuthorization";
 import requestAuthorization from "../utils/requestAuthorization";
 import requestTokens from "../utils/requestTokens";
+import requestUser from "../utils/requestUser";
 
 interface SpotifySignInProps {
   setSpotifyAuthorised: React.Dispatch<React.SetStateAction<boolean>>;
+  userID: string|null;
+  setUserID: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 function SpotifySignIn({
-  setSpotifyAuthorised,
+  setSpotifyAuthorised, userID, setUserID
 }: SpotifySignInProps): JSX.Element {
 
   useEffect(() => {
@@ -18,6 +21,9 @@ function SpotifySignIn({
         if (authorization) {
           if (authorization.code !== "no code") {
             await requestTokens(authorization.code);
+            const user = await requestUser();
+            setUserID(user);
+            console.log(user);
             setSpotifyAuthorised(true);
           } else {
             console.log(authorization.error);

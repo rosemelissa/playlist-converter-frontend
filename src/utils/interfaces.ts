@@ -135,3 +135,40 @@ export interface IYoutubeAndSpotify {
   youtube: TitleAndImg;
   spotify: ISpotifyTrack|null;
 }
+
+export interface ISpotifyUserSeach {
+  config: {};
+  data: IUser;
+  headers: {};
+  request: {};
+  status: number;
+  statusText: string;
+}
+
+export interface IUser {
+  country: string;
+  display_name: string;
+  email: string;
+  explicit_content: {
+    filter_enabled: boolean;
+    filter_locked: boolean;
+  };
+  external_urls: {
+    spotify: string;
+  };
+  followers: {
+    href: string;
+    total: number;
+  };
+  href: string;
+  id: string;
+  images:
+    {
+      url: string;
+      height: 300;
+      width: 300;
+    }[];
+  product: string;
+  type: string;
+  uri: string;
+}

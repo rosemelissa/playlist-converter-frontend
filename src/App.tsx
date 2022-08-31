@@ -10,11 +10,12 @@ function App(): JSX.Element {
   const [playlistSubmitted, setPlaylistSubmitted] = useState<boolean>(false);
   const [youtubePlaylistUrl, setYoutubePlaylistUrl] = useState<string>("");
   const [spotifySearchResults, setSpotifySearchResults] = useState<IYoutubeAndSpotify[]>([])
+  const [userID, setUserID] = useState<string|null>(null);
 
   return (
     <>
       {!spotifyAuthorised && (
-        <SpotifySignIn setSpotifyAuthorised={setSpotifyAuthorised} />
+        <SpotifySignIn setSpotifyAuthorised={setSpotifyAuthorised} userID={userID} setUserID={setUserID} />
       )}
       {spotifyAuthorised && !playlistSubmitted && (
         <YoutubeSearchPage playlistSent={playlistSent} setPlaylistSent={setPlaylistSent}
@@ -26,7 +27,7 @@ function App(): JSX.Element {
         <ConverterResults
           setPlaylistSent={setPlaylistSent}
           youtubePlaylistUrl={youtubePlaylistUrl}
-          setYoutubePlaylistUrl={setYoutubePlaylistUrl} spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults}
+          setYoutubePlaylistUrl={setYoutubePlaylistUrl} spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} userID={userID}
         />
       )}
     </>
