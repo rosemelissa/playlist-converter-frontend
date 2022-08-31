@@ -8,7 +8,7 @@ import generateRandomString from "./authorizationUtils/generateRandomString";
 async function requestAuthorization(): Promise<void> {
     dotenv.config();
 
-    const CLIENTID = "871f39857438482f9d88bddd3ec583e4";
+    const CLIENTID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
     const baseUrl = "http://localhost:3000";
 
     const codeVerifier = generateRandomString(64);
