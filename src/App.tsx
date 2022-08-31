@@ -2,7 +2,7 @@ import { useState } from "react";
 import ConverterResults from "./components/ConverterResults";
 import SpotifySignIn from "./components/SpotifySignIn";
 import YoutubeSearchPage from "./components/YoutubeSearchPage";
-import {ISpotifySearchData, ISpotifyTrack} from "./utils/interfaces";
+import {ISpotifyTrack} from "./utils/interfaces";
 
 function App(): JSX.Element {
   const [spotifyAuthorised, setSpotifyAuthorised] = useState<boolean>(false);

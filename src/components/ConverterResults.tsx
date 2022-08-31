@@ -1,4 +1,4 @@
-import { ISpotifySearchData, ISpotifyTrack } from "../utils/interfaces";
+import { ISpotifyTrack } from "../utils/interfaces";
 import SpotifyTrackListing from "./SpotifyTrackListing";
 
 interface ConverterResultsProps {

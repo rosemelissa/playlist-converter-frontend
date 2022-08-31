@@ -9,7 +9,6 @@ async function requestAuthorization(): Promise<void> {
     dotenv.config();
 
     const CLIENTID = "871f39857438482f9d88bddd3ec583e4";
-    const CLIENTSECRET = process.env.CLIENTSECRET;
     const baseUrl = "http://localhost:3000";
 
     const codeVerifier = generateRandomString(64);

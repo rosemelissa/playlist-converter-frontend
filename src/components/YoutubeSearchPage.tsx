@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import getPlaylistIdFromUrl from "../utils/getPlaylistIdFromUrl";
-import { ISpotifySearchData, ISpotifySearchResponse, ISpotifyTrack, TitleAndImg } from "../utils/interfaces";
+import { ISpotifySearchResponse, ISpotifyTrack, TitleAndImg } from "../utils/interfaces";
 import YoutubePlaylistListing from "./YoutubePlaylistListing";
 import YoutubeUrlInput from "./YoutubeUrlInput";
 import getArrayOfPlaylistItemIds from "../utils/getArrayOfPlaylistItemIds"
