@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ISpotifyPlaylistResponse, ISpotifyTrack, IYoutubeAndSpotify } from "../utils/interfaces";
 import SpotifyTrackListing from "./SpotifyTrackListing";
 import addTracksToPlaylist from "../utils/addTracksToPlaylist";
+import addImageToPlaylist from "../utils/addImageToPlaylist";
 
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,6 +21,13 @@ function ConverterResults({
 }: ConverterResultsProps): JSX.Element {
   const [playlistName, setPlaylistName] = useState<string>("My new playlist");
   const [playlistDescription, setPlaylistDescription] = useState<string>("This is my playlist description");
+  const [playlistImage, setPlaylistImage] = useState<File|null>(null);
+
+  const uploadPlaylistImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setPlaylistImage(e.target.files[0]);
+    }
+  }
 
   const makePublicPlaylist = async () => {
     const access_token = localStorage.getItem('access_token')
@@ -38,6 +46,7 @@ function ConverterResults({
       const response: ISpotifyPlaylistResponse = await axios.post(`https://api.spotify.com/v1/users/${userID}/playlists`, data, headers);
       console.log(response);
       const playlistID: string = response.data.id;
+      await addImageToPlaylist(playlistImage, playlistID);
       await addTracksToPlaylist(spotifySearchResults, playlistID);
     } catch (error) {
       console.error(error);
@@ -50,6 +59,8 @@ function ConverterResults({
       <label htmlFor="playlist-name">Playlist name</label>
       <input type="text" id="playlist-description" onChange={(e) => setPlaylistDescription(e.target.value)} value={playlistDescription}/>
       <label htmlFor="playlist-description">Playlist description</label>
+      <label htmlFor="cover">Choose a cover picture (max size 256kb):</label>
+      <input type="file" id="cover" accept="image/png, image/jpeg" onChange={(e) => uploadPlaylistImage(e)}/>
       <button type="button" onClick={makePublicPlaylist}>Make public playlist from these results</button>
       <h1>Results of the search:</h1>
       {spotifySearchResults.map((searchResult, i) => <SpotifyTrackListing thisTrack={searchResult} key={i}/>)}
@@ -61,5 +72,3 @@ function ConverterResults({
 }
 
 export default ConverterResults;
-
-
