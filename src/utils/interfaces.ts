@@ -1,4 +1,13 @@
-export interface PlaylistItemsJsonBody {
+export interface IYoutubeSearchResponse {
+  config: {};
+  data: IYoutubeSearchData;
+  headers: {};
+  request: {};
+  status: number;
+  statusText: string;
+}
+
+export interface IYoutubeSearchData {
     kind: string;
     etag: string;
     items: OnePlaylistItem[];
