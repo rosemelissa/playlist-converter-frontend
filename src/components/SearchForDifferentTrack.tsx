@@ -81,9 +81,10 @@ function SearchForDifferentTrack({
       <button type="button" onClick={searchForNewTracks}>
         Search
       </button>
+      <div className="search-new-tracks">
       {searchResults &&
         searchResults.map((thisTrack, i) => (
-          <div
+          <div className={`new-spotify-search-result ${thisTrack.id === newTrack?.id && "selected-track"}`}
             key={i}
             onClick={() => {
               newTrack && newTrack.id === thisTrack.id
@@ -97,6 +98,7 @@ function SearchForDifferentTrack({
             <img src={thisTrack.album.images[0].url} alt={thisTrack.name} />
           </div>
         ))}
+        </div>
 
       <button
         type="button"

@@ -1,7 +1,112 @@
 html body {
-  color: red;
+  color: black;
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: white;
+  text-align: center;
 }
 
 img {
   width: 200px;
+}
+
+.converter-search-results {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #45ada8;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.spotify-track-listing {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: 10px;
+    max-width: fit-content;
+    background-color: white;
+    align-items: center;
+}
+
+.original-search-results {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.youtube-search-result {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.spotify-search-result {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.spotify-search-result p,h3{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.new-spotify-search-result {
+    display: flex;
+    flex-direction: column;
+    width: 190px;
+    padding: 5px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 5px;
+}
+
+.new-spotify-search-result:hover {
+    background-color: lightgray;
+}
+
+.new-spotify-search-result.selected-track{
+    border: solid 5px #45ada8;
+    padding: 0px 0px;
+}
+
+.new-spotify-search-result p,h3{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.new-spotify-search-result img{
+    width: 100px;
+}
+
+.spotify-track-listing-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.spotify-track-listing-buttons button {
+    margin: 20px;
+}
+
+.search-new-tracks {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }

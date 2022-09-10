@@ -35,16 +35,22 @@ function SpotifyTrackListing({
 
   if (thisTrack.spotify) {
     return (
-      <>
-        <h3>Youtube: {thisTrack.youtube.title}</h3>
-        <img src={thisTrack.youtube.img} alt={thisTrack.youtube.title} />
-        <h3>Title: {thisTrack.spotify.name}</h3>
-        <p>Artists: {formatArtists(thisTrack.spotify.artists)}</p>
-        <p>Length: {formatDuration(thisTrack.spotify.duration_ms)}</p>
-        <img
-          src={thisTrack.spotify.album.images[0].url}
-          alt={thisTrack.spotify.name}
-        />
+      <div className="spotify-track-listing">
+      <div className="original-search-results">
+        <div className="youtube-search-result">
+            <h3>Youtube: {thisTrack.youtube.title}</h3>
+            <img src={thisTrack.youtube.img} alt={thisTrack.youtube.title} />
+        </div>
+        <div className="spotify-search-result">
+            <h3>Title: {thisTrack.spotify.name}</h3>
+            <p>Artists: {formatArtists(thisTrack.spotify.artists)}</p>
+            <p>Length: {formatDuration(thisTrack.spotify.duration_ms)}</p>
+            <img
+            src={thisTrack.spotify.album.images[0].url}
+            alt={thisTrack.spotify.name}
+            />
+        </div>
+        <div className="spotify-track-listing-buttons">
         <button type="button" onClick={removeTrackFromPlaylist}>
           Remove from playlist
         </button>
@@ -53,6 +59,8 @@ function SpotifyTrackListing({
             Search for a different track
           </button>
         )}
+        </div>
+        </div>
         {mode === "search" && (
           <SearchForDifferentTrack
             setMode={setMode}
@@ -61,11 +69,11 @@ function SpotifyTrackListing({
             indexOfThisTrack={indexOfThisTrack}
           />
         )}
-      </>
+      </div>
     );
   } else {
     return (
-      <>
+      <div className="spotify-track-listing">
         <h3>Sorry, this track couldn't be found:</h3>
         <p>Title: {thisTrack.youtube.title}</p>
         <img src={thisTrack.youtube.img} alt={thisTrack.youtube.title} />
@@ -82,7 +90,7 @@ function SpotifyTrackListing({
             indexOfThisTrack={indexOfThisTrack}
           />
         )}
-      </>
+      </div>
     );
   }
 }

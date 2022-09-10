@@ -127,6 +127,7 @@ function ConverterResults({
       </div>
 
       <h1>Results of the search:</h1>
+      <div className="converter-search-results">
       {spotifySearchResults.map((searchResult, i) => (
         <SpotifyTrackListing
           spotifySearchResults={spotifySearchResults}
@@ -136,6 +137,7 @@ function ConverterResults({
           indexOfThisTrack={i}
         />
       ))}
+      </div>
     </>
   );
 }
