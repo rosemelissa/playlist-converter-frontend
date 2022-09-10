@@ -1,4 +1,4 @@
-import { ISpotifyTrack, IYoutubeAndSpotify } from "../utils/interfaces";
+import { IYoutubeAndSpotify } from "../utils/interfaces";
 import formatDuration from "../utils/formatDuration";
 import { useState } from "react";
 import SearchForDifferentTrack from "./SearchForDifferentTrack";
@@ -56,7 +56,6 @@ function SpotifyTrackListing({
         {mode === "search" && (
           <SearchForDifferentTrack
             setMode={setMode}
-            thisTrack={thisTrack}
             spotifySearchResults={spotifySearchResults}
             setSpotifySearchResults={setSpotifySearchResults}
             indexOfThisTrack={indexOfThisTrack}

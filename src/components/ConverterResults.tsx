@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import {
   ISpotifyPlaylistResponse,
-  ISpotifyTrack,
   IYoutubeAndSpotify,
 } from "../utils/interfaces";
 import SpotifyTrackListing from "./SpotifyTrackListing";
@@ -11,7 +10,6 @@ import addImageToPlaylist from "../utils/addImageToPlaylist";
 
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
-  youtubePlaylistUrl: string;
   setYoutubePlaylistUrl: React.Dispatch<React.SetStateAction<string>>;
   spotifySearchResults: IYoutubeAndSpotify[];
   setSpotifySearchResults: React.Dispatch<
@@ -23,7 +21,6 @@ interface ConverterResultsProps {
 
 function ConverterResults({
   setPlaylistSent,
-  youtubePlaylistUrl,
   setYoutubePlaylistUrl,
   spotifySearchResults,
   setSpotifySearchResults,
@@ -80,7 +77,7 @@ function ConverterResults({
         <>
           <p>
             Playlist created! Link:{" "}
-            <a href={spotifyPlaylistUrl} target="_blank">
+            <a href={spotifyPlaylistUrl} target="_blank" rel="noopener noreferrer">
               {spotifyPlaylistUrl}
             </a>
           </p>

@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import getPlaylistIdFromUrl from "../utils/getPlaylistIdFromUrl";
 import {
   ISpotifySearchResponse,
-  ISpotifyTrack,
   IYoutubeAndSpotify,
   IYoutubeSearchResponse,
-  IYoutubeSearchData,
   TitleAndImg,
 } from "../utils/interfaces";
 import YoutubePlaylistListing from "./YoutubePlaylistListing";
@@ -48,13 +46,6 @@ function YoutubeSearchPage({
         console.log(response);
 
         setPlaylistItems(getArrayOfPlaylistItemIds(response.data));
-
-        // fetch(
-        //   `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=${playlistId}&key=${YOUR_API_KEY}`
-        // ).then((response) => {console.log(response); return response.json()})
-
-        //   .then((jsonBody) => setPlaylistItems(getArrayOfPlaylistItemIds(jsonBody)))
-        // ;
       } catch (error) {
         console.error(error);
         window.alert(

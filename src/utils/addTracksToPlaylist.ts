@@ -4,7 +4,7 @@ import { IYoutubeAndSpotify } from "./interfaces";
 async function addTracksToPlaylist(
   tracks: IYoutubeAndSpotify[],
   playlistID: string
-) {
+): Promise<void> {
   const uriArray: string[] = [];
   for (const track of tracks) {
     if (track.spotify) {

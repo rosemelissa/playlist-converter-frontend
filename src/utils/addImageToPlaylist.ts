@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function addImageToPlaylist(image: File | null, playlistID: string) {
+async function addImageToPlaylist(image: File | null, playlistID: string): Promise<void> {
   if (image) {
     let imgFile: string | ArrayBuffer | null = "";
     const reader = new FileReader();

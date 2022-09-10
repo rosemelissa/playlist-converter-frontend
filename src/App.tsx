@@ -2,7 +2,7 @@ import { useState } from "react";
 import ConverterResults from "./components/ConverterResults";
 import SpotifySignIn from "./components/SpotifySignIn";
 import YoutubeSearchPage from "./components/YoutubeSearchPage";
-import { ISpotifyTrack, IYoutubeAndSpotify } from "./utils/interfaces";
+import { IYoutubeAndSpotify } from "./utils/interfaces";
 
 function App(): JSX.Element {
   const [spotifyAuthorised, setSpotifyAuthorised] = useState<boolean>(false);
@@ -37,7 +37,6 @@ function App(): JSX.Element {
       {spotifyAuthorised && playlistSubmitted && (
         <ConverterResults
           setPlaylistSent={setPlaylistSent}
-          youtubePlaylistUrl={youtubePlaylistUrl}
           setYoutubePlaylistUrl={setYoutubePlaylistUrl}
           spotifySearchResults={spotifySearchResults}
           setSpotifySearchResults={setSpotifySearchResults}

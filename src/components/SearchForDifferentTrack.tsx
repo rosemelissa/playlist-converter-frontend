@@ -9,7 +9,6 @@ import axios from "axios";
 
 interface SearchForDifferentTrackProps {
   setMode: React.Dispatch<React.SetStateAction<"display" | "search">>;
-  thisTrack: IYoutubeAndSpotify;
   spotifySearchResults: IYoutubeAndSpotify[];
   setSpotifySearchResults: React.Dispatch<
     React.SetStateAction<IYoutubeAndSpotify[]>
@@ -19,7 +18,6 @@ interface SearchForDifferentTrackProps {
 
 function SearchForDifferentTrack({
   setMode,
-  thisTrack,
   spotifySearchResults,
   setSpotifySearchResults,
   indexOfThisTrack,
@@ -31,9 +29,6 @@ function SearchForDifferentTrack({
   const [newTrack, setNewTrack] = useState<ISpotifyTrack | null>(null);
 
   const searchForNewTracks = async () => {
-    //search spotify api for track
-    //return top 5
-    //set search results to result
     const access_token = localStorage.getItem("access_token");
     const headers = {
       headers: {
@@ -42,7 +37,6 @@ function SearchForDifferentTrack({
       },
     };
     let resultsOfThisSearch: ISpotifyTrack[] = [];
-    // for (const item of playlistItems) {
     try {
       const searchResults: ISpotifySearchResponse = await axios.get(
         `https://api.spotify.com/v1/search?q=name:${searchTerm}&type=track&limit=5`,
@@ -52,16 +46,12 @@ function SearchForDifferentTrack({
       resultsOfThisSearch = [...searchResults.data.tracks.items];
     } catch (error) {
       console.error(error);
-      // resultsOfThisSearch.push({youtube: item, spotify: null})
     }
-    // }
     console.log("resultsofthissearch " + resultsOfThisSearch);
     setSearchResults([...resultsOfThisSearch]);
-    // setPlaylistSubmitted(true)
   };
 
   const useThisTrack = () => {
-    // const indexOfTrack: number =
     const newResults: IYoutubeAndSpotify[] = spotifySearchResults.map(
       (result, i) => {
         if (newTrack) {
