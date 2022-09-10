@@ -3,7 +3,6 @@ import getPlaylistIdFromUrl from "../utils/getPlaylistIdFromUrl";
 import {
   ISpotifySearchResponse,
   IYoutubeAndSpotify,
-  IYoutubeSearchResponse,
   TitleAndImg,
 } from "../utils/interfaces";
 import YoutubePlaylistListing from "./YoutubePlaylistListing";
@@ -17,7 +16,6 @@ interface YoutubeSearchPageProps {
   youtubePlaylistUrl: string;
   setYoutubePlaylistUrl: React.Dispatch<React.SetStateAction<string>>;
   setPlaylistSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
-  spotifySearchResults: IYoutubeAndSpotify[];
   setSpotifySearchResults: React.Dispatch<
     React.SetStateAction<IYoutubeAndSpotify[]>
   >;
@@ -29,12 +27,9 @@ function YoutubeSearchPage({
   youtubePlaylistUrl,
   setYoutubePlaylistUrl,
   setPlaylistSubmitted,
-  spotifySearchResults,
   setSpotifySearchResults,
 }: YoutubeSearchPageProps): JSX.Element {
   const [playlistItems, setPlaylistItems] = useState<TitleAndImg[]>([]);
-
-  const YOUR_API_KEY = process.env.REACT_APP_YT_API_KEY;
 
   useEffect(() => {
     const getPlaylistFromYoutube = async () => {

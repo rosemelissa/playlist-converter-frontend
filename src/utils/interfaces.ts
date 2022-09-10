@@ -1,5 +1,5 @@
 export default interface ISpotifyAPI {
-  config: {};
+  config: Record<string, unknown>;
   data: {
     access_token: string;
     expires_in: number;
@@ -7,17 +7,17 @@ export default interface ISpotifyAPI {
     scope: string;
     token_type: string;
   };
-  headers: {};
-  request: {};
+  headers: Record<string, unknown>;
+  request: Record<string, unknown>;
   status: number;
   statusText: string;
 }
 
 export interface IYoutubeSearchResponse {
-  config: {};
+  config: Record<string, unknown>;
   data: IYoutubeSearchData;
-  headers: {};
-  request: {};
+  headers: Record<string, unknown>;
+  request: Record<string, unknown>;
   status: number;
   statusText: string;
 }
@@ -91,10 +91,10 @@ export interface TitleAndImg {
 }
 
 export interface ISpotifySearchResponse {
-  config: {};
+  config: Record<string, unknown>;
   data: ISpotifySearchData;
-  headers: {};
-  request: {};
+  headers: Record<string, unknown>;
+  request: Record<string, unknown>;
   status: number;
   statusText: string;
 }
@@ -109,17 +109,17 @@ export interface ISpotifySearchData {
     previos: string;
     total: number;
   };
-  arists: {};
-  albums: {};
-  playlists: {};
-  shows: {};
-  episodes: {};
+  arists: Record<string, unknown>;
+  albums: Record<string, unknown>;
+  playlists: Record<string, unknown>;
+  shows: Record<string, unknown>;
+  episodes: Record<string, unknown>;
 }
 
 export interface ISpotifyTrack {
   album: {
     album_type: string;
-    artists: {}[];
+    artists: Record<string, unknown>[];
     available_markets: string[];
     external_urls: { spotify: string };
     href: string;
@@ -163,10 +163,10 @@ export interface IYoutubeAndSpotify {
 }
 
 export interface ISpotifyUserSeach {
-  config: {};
+  config: Record<string, unknown>;
   data: IUser;
-  headers: {};
-  request: {};
+  headers: Record<string, unknown>;
+  request: Record<string, unknown>;
   status: number;
   statusText: string;
 }
@@ -199,10 +199,10 @@ export interface IUser {
 }
 
 export interface ISpotifyPlaylistResponse {
-  config: {};
+  config: Record<string, unknown>;
   data: ISpotifyPlaylist;
-  headers: {};
-  request: {};
+  headers: Record<string, unknown>;
+  request: Record<string, unknown>;
   status: number;
   statusText: string;
 }
@@ -211,16 +211,16 @@ export interface ISpotifyPlaylist {
   collaborative: boolean;
   description: string;
   external_urls: { spotify: string };
-  followers: {};
+  followers: Record<string, unknown>;
   href: string;
   id: string;
   images: any[];
   name: string;
-  owner: {};
+  owner: Record<string, unknown>;
   primary_color: null;
   public: boolean;
   snapshot_id: string;
-  tracks: {};
+  tracks: Record<string, unknown>;
   type: string;
   uri: string;
 }

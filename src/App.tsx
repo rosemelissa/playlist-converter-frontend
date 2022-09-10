@@ -30,7 +30,6 @@ function App(): JSX.Element {
           youtubePlaylistUrl={youtubePlaylistUrl}
           setYoutubePlaylistUrl={setYoutubePlaylistUrl}
           setPlaylistSubmitted={setPlaylistSubmitted}
-          spotifySearchResults={spotifySearchResults}
           setSpotifySearchResults={setSpotifySearchResults}
         />
       )}
