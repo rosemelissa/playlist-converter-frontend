@@ -1,11 +1,11 @@
 export default interface ISpotifyAPI {
   config: {};
   data: {
-      access_token: string;
-  expires_in: number;
-  refresh_token: string;
-  scope: string;
-  token_type: string;
+    access_token: string;
+    expires_in: number;
+    refresh_token: string;
+    scope: string;
+    token_type: string;
   };
   headers: {};
   request: {};
@@ -23,70 +23,70 @@ export interface IYoutubeSearchResponse {
 }
 
 export interface IYoutubeSearchData {
-    kind: string;
-    etag: string;
-    items: OnePlaylistItem[];
-    pageInfo: {
-        totalResults: number;
-        resultsPerPage: number;
-    };
+  kind: string;
+  etag: string;
+  items: OnePlaylistItem[];
+  pageInfo: {
+    totalResults: number;
+    resultsPerPage: number;
+  };
 }
 
 export interface OnePlaylistItem {
-    kind: string;
-    etag: string;
-    id: string;
-    snippet: {
-        publishedAt: string;
-        channelId: string;
-        title: string;
-        description: string;
-        thumbnails: {
-            default: {
-              url: string,
-              width: number,
-              height: number;
-            };
-            medium: {
-                url: string,
-                width: number,
-                height: number;
-              };
-            high: {
-                url: string,
-                width: number,
-                height: number;
-              };
-            standard: {
-                url: string,
-                width: number,
-                height: number;
-              };
-            maxres: {
-                url: string,
-                width: number,
-                height: number;
-              };
-          };
-          channelTitle: string;
-          playlistId: string;
-          position: number;
-          resourceId: {
-            kind: string;
-            videoId: string;
-          };
-          videoOwnerChannelTitle: string;
-          videoOwnerChannelId: string;
-        };
-        contentDetails: {
-          videoId: string;
-          videoPublishedAt: string;
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: {
+    publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: {
+      default: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      medium: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      high: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      standard: {
+        url: string;
+        width: number;
+        height: number;
+      };
+      maxres: {
+        url: string;
+        width: number;
+        height: number;
+      };
     };
+    channelTitle: string;
+    playlistId: string;
+    position: number;
+    resourceId: {
+      kind: string;
+      videoId: string;
+    };
+    videoOwnerChannelTitle: string;
+    videoOwnerChannelId: string;
+  };
+  contentDetails: {
+    videoId: string;
+    videoPublishedAt: string;
+  };
 }
 
 export interface TitleAndImg {
-    title: string;
-    img: string;
+  title: string;
+  img: string;
 }
 
 export interface ISpotifySearchResponse {
@@ -107,7 +107,7 @@ export interface ISpotifySearchData {
     offset: number;
     previos: string;
     total: number;
-  }
+  };
   arists: {};
   albums: {};
   playlists: {};
@@ -118,32 +118,33 @@ export interface ISpotifySearchData {
 export interface ISpotifyTrack {
   album: {
     album_type: string;
-    artists: {}[]
+    artists: {}[];
     available_markets: string[];
-    external_urls: {spotify: string};
+    external_urls: { spotify: string };
     href: string;
     id: string;
-    images: 
-    {height: number; url: string; width: number}[];
+    images: { height: number; url: string; width: number }[];
     name: string;
     release_date: string;
     release_date_precision: string;
     total_tracks: number;
     type: string;
-    uri: string};
+    uri: string;
+  };
   artists: {
-    external_urls: {spotify: string};
+    external_urls: { spotify: string };
     href: string;
     id: string;
     name: string;
     type: string;
-    uri: string}[]
+    uri: string;
+  }[];
   available_markets: string[];
   disc_number: number;
   duration_ms: number;
   explicit: boolean;
-  external_ids: {isrc: string};
-  external_urls: {spotify: string};
+  external_ids: { isrc: string };
+  external_urls: { spotify: string };
   href: string;
   id: string;
   is_local: boolean;
@@ -157,7 +158,7 @@ export interface ISpotifyTrack {
 
 export interface IYoutubeAndSpotify {
   youtube: TitleAndImg;
-  spotify: ISpotifyTrack|null;
+  spotify: ISpotifyTrack | null;
 }
 
 export interface ISpotifyUserSeach {
@@ -186,12 +187,11 @@ export interface IUser {
   };
   href: string;
   id: string;
-  images:
-    {
-      url: string;
-      height: 300;
-      width: 300;
-    }[];
+  images: {
+    url: string;
+    height: 300;
+    width: 300;
+  }[];
   product: string;
   type: string;
   uri: string;
@@ -209,17 +209,17 @@ export interface ISpotifyPlaylistResponse {
 export interface ISpotifyPlaylist {
   collaborative: boolean;
   description: string;
-  external_urls: {spotify: string}
-  followers: {}
+  external_urls: { spotify: string };
+  followers: {};
   href: string;
   id: string;
-  images: any[]
+  images: any[];
   name: string;
-  owner: {}
+  owner: {};
   primary_color: null;
   public: boolean;
   snapshot_id: string;
-  tracks: {}
+  tracks: {};
   type: string;
   uri: string;
 }

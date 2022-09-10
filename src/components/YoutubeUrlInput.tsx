@@ -9,14 +9,15 @@ function YoutubeUrlInput({
   youtubePlaylistUrl,
   setYoutubePlaylistUrl,
 }: YoutubeUrlInputProps): JSX.Element {
-
   const handleSubmit = () => {
     if (youtubePlaylistUrl.includes("list=")) {
       setPlaylistSent(true);
     } else {
-      window.alert("Invalid playlist url. Make sure the url you submit contains 'list='")
+      window.alert(
+        "Invalid playlist url. Make sure the url you submit contains 'list='"
+      );
     }
-  }
+  };
 
   return (
     <>
