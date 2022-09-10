@@ -43,9 +43,6 @@ function YoutubeSearchPage({
         if (playlistId) {
           setPlaylistItems(await getArrayOfPlaylistItemIds(playlistId));
         }
-        
-
-        
       } catch (error) {
         console.error(error);
         window.alert(

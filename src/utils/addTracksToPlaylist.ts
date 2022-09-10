@@ -45,8 +45,6 @@ async function addTracksToPlaylist(
       }
     }
   }
-
-  
 }
 
 export default addTracksToPlaylist;

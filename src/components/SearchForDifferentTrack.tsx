@@ -97,16 +97,16 @@ function SearchForDifferentTrack({
             <img src={thisTrack.album.images[0].url} alt={thisTrack.name} />
           </div>
         ))}
-      
-        <button
-          type="button"
-          onClick={() => {
-            setMode("display");
-          }}
-        >
-          Cancel
-        </button>
-      
+
+      <button
+        type="button"
+        onClick={() => {
+          setMode("display");
+        }}
+      >
+        Cancel
+      </button>
+
       {newTrack && (
         <button type="button" onClick={useThisTrack}>
           Use this track

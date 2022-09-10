@@ -77,7 +77,11 @@ function ConverterResults({
         <>
           <p>
             Playlist created! Link:{" "}
-            <a href={spotifyPlaylistUrl} target="_blank" rel="noopener noreferrer">
+            <a
+              href={spotifyPlaylistUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {spotifyPlaylistUrl}
             </a>
           </p>
