@@ -69,6 +69,19 @@ function SpotifyTrackListing({
         <h3>Sorry, this track couldn't be found:</h3>
         <p>Title: {thisTrack.youtube.title}</p>
         <img src={thisTrack.youtube.img} alt={thisTrack.youtube.title} />
+        {mode === "display" && (
+          <button type="button" onClick={() => setMode("search")}>
+            Manually search for track
+          </button>
+        )}
+        {mode === "search" && (
+          <SearchForDifferentTrack
+            setMode={setMode}
+            spotifySearchResults={spotifySearchResults}
+            setSpotifySearchResults={setSpotifySearchResults}
+            indexOfThisTrack={indexOfThisTrack}
+          />
+        )}
       </>
     );
   }

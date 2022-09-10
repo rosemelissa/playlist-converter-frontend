@@ -97,7 +97,7 @@ function SearchForDifferentTrack({
             <img src={thisTrack.album.images[0].url} alt={thisTrack.name} />
           </div>
         ))}
-      {searchResults && (
+      
         <button
           type="button"
           onClick={() => {
@@ -106,7 +106,7 @@ function SearchForDifferentTrack({
         >
           Cancel
         </button>
-      )}
+      
       {newTrack && (
         <button type="button" onClick={useThisTrack}>
           Use this track
