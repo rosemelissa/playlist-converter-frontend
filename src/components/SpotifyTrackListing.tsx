@@ -1,13 +1,18 @@
 import { ISpotifyTrack, IYoutubeAndSpotify } from "../utils/interfaces";
 import formatDuration from "../utils/formatDuration"
+import { useState } from "react";
+import SearchForDifferentTrack from "./SearchForDifferentTrack";
 
 interface SpotifyTrackListingProps {
     spotifySearchResults: IYoutubeAndSpotify[];
     setSpotifySearchResults: React.Dispatch<React.SetStateAction<IYoutubeAndSpotify[]>>;
     thisTrack: IYoutubeAndSpotify;
+    indexOfThisTrack: number;
 }
 
-function SpotifyTrackListing({spotifySearchResults,setSpotifySearchResults , thisTrack}: SpotifyTrackListingProps): JSX.Element {
+function SpotifyTrackListing({spotifySearchResults,setSpotifySearchResults , thisTrack, indexOfThisTrack}: SpotifyTrackListingProps): JSX.Element {
+    const [mode, setMode] = useState<'display'|'search'>('display')
+
 
     const removeTrackFromPlaylist = () => {
         setSpotifySearchResults(spotifySearchResults.filter(result => {
@@ -28,7 +33,8 @@ function SpotifyTrackListing({spotifySearchResults,setSpotifySearchResults , thi
             <p>Length: {formatDuration(thisTrack.spotify.duration_ms)}</p>
             <img src={thisTrack.spotify.album.images[0].url} alt={thisTrack.spotify.name}/>
             <button type="button" onClick={removeTrackFromPlaylist}>Remove from playlist</button>
-
+            {mode === 'display' && <button type="button" onClick={() => setMode('search')}>Search for a different track</button>}
+            {mode === 'search' && <SearchForDifferentTrack setMode={setMode} thisTrack={thisTrack} spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} indexOfThisTrack={indexOfThisTrack} />}
             </>
         )
     } else {

@@ -66,7 +66,7 @@ function ConverterResults({
       </div>
       
       <h1>Results of the search:</h1>
-      {spotifySearchResults.map((searchResult, i) => <SpotifyTrackListing spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} thisTrack={searchResult} key={i}/>)}
+      {spotifySearchResults.map((searchResult, i) => <SpotifyTrackListing spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} thisTrack={searchResult} key={i} indexOfThisTrack={i}/>)}
       <button type="button" onClick={() => setPlaylistSent(false)}>
         Do another playlist
       </button>
