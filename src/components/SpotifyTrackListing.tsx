@@ -2,6 +2,7 @@ import { ISpotifyTrack, IYoutubeAndSpotify } from "../utils/interfaces";
 import formatDuration from "../utils/formatDuration"
 import { useState } from "react";
 import SearchForDifferentTrack from "./SearchForDifferentTrack";
+import formatArtists from "../utils/formatArtists"
 
 interface SpotifyTrackListingProps {
     spotifySearchResults: IYoutubeAndSpotify[];
@@ -29,7 +30,7 @@ function SpotifyTrackListing({spotifySearchResults,setSpotifySearchResults , thi
             <h3>Youtube: {thisTrack.youtube.title}</h3>
             <img src={thisTrack.youtube.img} alt={thisTrack.youtube.title}/>
             <h3>Title: {thisTrack.spotify.name}</h3>
-            <p>Artists: {thisTrack.spotify.artists.map(artist => artist.name)}</p>
+            <p>Artists: {formatArtists(thisTrack.spotify.artists)}</p>
             <p>Length: {formatDuration(thisTrack.spotify.duration_ms)}</p>
             <img src={thisTrack.spotify.album.images[0].url} alt={thisTrack.spotify.name}/>
             <button type="button" onClick={removeTrackFromPlaylist}>Remove from playlist</button>
