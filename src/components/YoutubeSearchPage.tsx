@@ -51,6 +51,7 @@ function YoutubeSearchPage({
     if (playlistSent) {
       getPlaylistFromYoutube();
     }
+  // eslint-disable-next-line
   }, [playlistSent]);
 
   const submitPlaylist = async () => {

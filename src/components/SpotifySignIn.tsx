@@ -35,6 +35,7 @@ function SpotifySignIn({
       }
     };
     handlePageLoad();
+  // eslint-disable-next-line
   }, []);
 
   const handleLogin = async () => {

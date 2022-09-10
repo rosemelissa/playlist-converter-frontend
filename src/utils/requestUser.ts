@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ISpotifyUserSeach, IUser } from "./interfaces";
+import { ISpotifyUserSeach } from "./interfaces";
 
 async function requestUser(): Promise<string | null> {
   const access_token = localStorage.getItem("access_token");

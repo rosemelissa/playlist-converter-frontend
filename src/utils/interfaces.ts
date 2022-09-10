@@ -151,7 +151,7 @@ export interface ISpotifyTrack {
   is_local: boolean;
   name: string;
   popularity: number;
-  preview_url: any;
+  preview_url: string|null;
   track_number: number;
   type: string;
   uri: string;
@@ -214,7 +214,7 @@ export interface ISpotifyPlaylist {
   followers: Record<string, unknown>;
   href: string;
   id: string;
-  images: any[];
+  images: [] | Record<string, unknown>[];
   name: string;
   owner: Record<string, unknown>;
   primary_color: null;
