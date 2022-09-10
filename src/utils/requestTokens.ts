@@ -1,6 +1,6 @@
 import axios from "axios";
 import dotenv from "dotenv";
-import ISpotifyAPI from "./ISpotifyAPI";
+import ISpotifyAPI from "./interfaces";
 dotenv.config();
 /**
  * Uses the redirect code from requestAuthorization to request access and refresh tokens for the Spotify API
