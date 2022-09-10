@@ -23,6 +23,7 @@ function ConverterResults({
   const [playlistName, setPlaylistName] = useState<string>("My new playlist");
   const [playlistDescription, setPlaylistDescription] = useState<string>("This is my playlist description");
   const [playlistImage, setPlaylistImage] = useState<File|null>(null);
+  const [spotifyPlaylistUrl, setSpotifyPlaylistUrl] = useState<string|null>(null);
 
   const uploadPlaylistImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -49,6 +50,7 @@ function ConverterResults({
       const playlistID: string = response.data.id;
       await addImageToPlaylist(playlistImage, playlistID);
       await addTracksToPlaylist(spotifySearchResults, playlistID);
+      setSpotifyPlaylistUrl(response.data.external_urls.spotify);
     } catch (error) {
       console.error(error);
     }
@@ -56,6 +58,12 @@ function ConverterResults({
     
   return (
     <>
+      {spotifyPlaylistUrl && <>
+        <p>Playlist created! Link: <a href={spotifyPlaylistUrl} target="_blank">{spotifyPlaylistUrl}</a></p>
+        <button type="button" onClick={() => {setPlaylistSent(false); setPlaylistSubmitted(false); setYoutubePlaylistUrl(""); setSpotifySearchResults([]); setSpotifyPlaylistUrl(null)}}>
+        Search for a different youtube playlist
+      </button>
+      </>}
       <div className="make-public-playlist">
         <input type="text" id="playlist-name" onChange={(e) => setPlaylistName(e.target.value)} value={playlistName}/>
         <label htmlFor="playlist-name">Playlist name</label>
@@ -68,9 +76,7 @@ function ConverterResults({
       
       <h1>Results of the search:</h1>
       {spotifySearchResults.map((searchResult, i) => <SpotifyTrackListing spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} thisTrack={searchResult} key={i} indexOfThisTrack={i}/>)}
-      <button type="button" onClick={() => {setPlaylistSent(false); setPlaylistSubmitted(false); setYoutubePlaylistUrl(""); setSpotifySearchResults([])}}>
-        Do another playlist
-      </button>
+      
     </>
   );
 }
