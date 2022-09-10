@@ -30,6 +30,7 @@ export interface IYoutubeSearchData {
     totalResults: number;
     resultsPerPage: number;
   };
+  nextPageToken?: string;
 }
 
 export interface OnePlaylistItem {

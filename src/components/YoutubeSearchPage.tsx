@@ -40,12 +40,12 @@ function YoutubeSearchPage({
     const getPlaylistFromYoutube = async () => {
       try {
         const playlistId = getPlaylistIdFromUrl(youtubePlaylistUrl);
-        const response: IYoutubeSearchResponse = await axios.get(
-          `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId=${playlistId}&key=${YOUR_API_KEY}`
-        );
-        console.log(response);
+        if (playlistId) {
+          setPlaylistItems(await getArrayOfPlaylistItemIds(playlistId));
+        }
+        
 
-        setPlaylistItems(getArrayOfPlaylistItemIds(response.data));
+        
       } catch (error) {
         console.error(error);
         window.alert(
