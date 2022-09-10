@@ -27,7 +27,7 @@ function App(): JSX.Element {
         <ConverterResults
           setPlaylistSent={setPlaylistSent}
           youtubePlaylistUrl={youtubePlaylistUrl}
-          setYoutubePlaylistUrl={setYoutubePlaylistUrl} spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} userID={userID}
+          setYoutubePlaylistUrl={setYoutubePlaylistUrl} spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} userID={userID} setPlaylistSubmitted={setPlaylistSubmitted}
         />
       )}
     </>

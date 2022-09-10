@@ -12,12 +12,13 @@ interface ConverterResultsProps {
   spotifySearchResults: IYoutubeAndSpotify[];
   setSpotifySearchResults: React.Dispatch<React.SetStateAction<IYoutubeAndSpotify[]>>;
   userID: string|null;
+  setPlaylistSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ConverterResults({
   setPlaylistSent,
   youtubePlaylistUrl,
-  setYoutubePlaylistUrl, spotifySearchResults, setSpotifySearchResults, userID
+  setYoutubePlaylistUrl, spotifySearchResults, setSpotifySearchResults, userID, setPlaylistSubmitted
 }: ConverterResultsProps): JSX.Element {
   const [playlistName, setPlaylistName] = useState<string>("My new playlist");
   const [playlistDescription, setPlaylistDescription] = useState<string>("This is my playlist description");
@@ -67,7 +68,7 @@ function ConverterResults({
       
       <h1>Results of the search:</h1>
       {spotifySearchResults.map((searchResult, i) => <SpotifyTrackListing spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} thisTrack={searchResult} key={i} indexOfThisTrack={i}/>)}
-      <button type="button" onClick={() => setPlaylistSent(false)}>
+      <button type="button" onClick={() => {setPlaylistSent(false); setPlaylistSubmitted(false); setYoutubePlaylistUrl(""); setSpotifySearchResults([])}}>
         Do another playlist
       </button>
     </>
