@@ -55,15 +55,18 @@ function ConverterResults({
     
   return (
     <>
-      <input type="text" id="playlist-name" onChange={(e) => setPlaylistName(e.target.value)} value={playlistName}/>
-      <label htmlFor="playlist-name">Playlist name</label>
-      <input type="text" id="playlist-description" onChange={(e) => setPlaylistDescription(e.target.value)} value={playlistDescription}/>
-      <label htmlFor="playlist-description">Playlist description</label>
-      <label htmlFor="cover">Choose a cover picture (max size 256kb):</label>
-      <input type="file" id="cover" accept="image/png, image/jpeg" onChange={(e) => uploadPlaylistImage(e)}/>
-      <button type="button" onClick={makePublicPlaylist}>Make public playlist from these results</button>
+      <div className="make-public-playlist">
+        <input type="text" id="playlist-name" onChange={(e) => setPlaylistName(e.target.value)} value={playlistName}/>
+        <label htmlFor="playlist-name">Playlist name</label>
+        <input type="text" id="playlist-description" onChange={(e) => setPlaylistDescription(e.target.value)} value={playlistDescription}/>
+        <label htmlFor="playlist-description">Playlist description</label>
+        <label htmlFor="cover">Choose a cover picture (max size 256kb):</label>
+        <input type="file" id="cover" accept="image/png, image/jpeg" onChange={(e) => uploadPlaylistImage(e)}/>
+        <button type="button" onClick={makePublicPlaylist}>Make public playlist from these results</button>
+      </div>
+      
       <h1>Results of the search:</h1>
-      {spotifySearchResults.map((searchResult, i) => <SpotifyTrackListing thisTrack={searchResult} key={i}/>)}
+      {spotifySearchResults.map((searchResult, i) => <SpotifyTrackListing spotifySearchResults={spotifySearchResults} setSpotifySearchResults={setSpotifySearchResults} thisTrack={searchResult} key={i}/>)}
       <button type="button" onClick={() => setPlaylistSent(false)}>
         Do another playlist
       </button>
