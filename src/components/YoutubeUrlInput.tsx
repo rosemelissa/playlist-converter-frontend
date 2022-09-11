@@ -9,7 +9,7 @@ function YoutubeUrlInput({
   youtubePlaylistUrl,
   setYoutubePlaylistUrl,
 }: YoutubeUrlInputProps): JSX.Element {
-  const handleSubmit = () => {
+  const handleSearch = () => {
     if (youtubePlaylistUrl.includes("list=")) {
       setPlaylistSent(true);
     } else {
@@ -27,8 +27,8 @@ function YoutubeUrlInput({
         value={youtubePlaylistUrl}
         onChange={(e) => setYoutubePlaylistUrl(e.target.value)}
       />
-      <button type="button" onClick={handleSubmit}>
-        Submit
+      <button type="button" onClick={handleSearch}>
+        Search
       </button>
     </>
   );
