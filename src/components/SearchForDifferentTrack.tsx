@@ -6,6 +6,7 @@ import {
 } from "../utils/interfaces";
 import formatDuration from "../utils/formatDuration";
 import axios from "axios";
+import checkAccessTokens from "../utils/checkAccessTokens";
 
 interface SearchForDifferentTrackProps {
   setMode: React.Dispatch<React.SetStateAction<"display" | "search">>;
@@ -29,6 +30,7 @@ function SearchForDifferentTrack({
   const [newTrack, setNewTrack] = useState<ISpotifyTrack | null>(null);
 
   const searchForNewTracks = async () => {
+    await checkAccessTokens();
     const access_token = localStorage.getItem("access_token");
     const headers = {
       headers: {

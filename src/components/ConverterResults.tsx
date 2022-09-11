@@ -7,6 +7,7 @@ import {
 import SpotifyTrackListing from "./SpotifyTrackListing";
 import addTracksToPlaylist from "../utils/addTracksToPlaylist";
 import addImageToPlaylist from "../utils/addImageToPlaylist";
+import checkAccessTokens from "../utils/checkAccessTokens";
 
 interface ConverterResultsProps {
   setPlaylistSent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -45,6 +46,7 @@ function ConverterResults({
 
   const makePublicPlaylist = async () => {
     setLoading(true);
+    await checkAccessTokens();
     const access_token = localStorage.getItem("access_token");
     const headers = {
       headers: {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import checkAccessTokens from "./checkAccessTokens";
 
 async function addImageToPlaylist(
   image: File | null,
@@ -22,6 +23,7 @@ async function sendImageToPlaylistAPI(
   if (typeof imgFile === "string") {
     const re = /data:[A-z]+\/[A-z]+;base64,/g;
     imgFile = imgFile.replace(re, "");
+    await checkAccessTokens();
     const access_token = localStorage.getItem("access_token");
     const headers = {
       headers: {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import checkAccessTokens from "./checkAccessTokens";
 import { IYoutubeAndSpotify } from "./interfaces";
 
 async function addTracksToPlaylist(
@@ -26,6 +27,7 @@ async function addTracksToPlaylist(
   if (uriArrays) {
     for (const uriArray of uriArrays) {
       if (uriArray.length > 0) {
+        await checkAccessTokens();
         const access_token = localStorage.getItem("access_token");
         const headers = {
           headers: {

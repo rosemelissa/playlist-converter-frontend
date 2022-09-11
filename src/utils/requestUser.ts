@@ -1,7 +1,9 @@
 import axios from "axios";
+import checkAccessTokens from "./checkAccessTokens";
 import { ISpotifyUserSeach } from "./interfaces";
 
 async function requestUser(): Promise<string | null> {
+  await checkAccessTokens();
   const access_token = localStorage.getItem("access_token");
   const headers = {
     headers: {

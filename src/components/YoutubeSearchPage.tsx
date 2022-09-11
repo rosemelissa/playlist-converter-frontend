@@ -9,6 +9,7 @@ import YoutubePlaylistListing from "./YoutubePlaylistListing";
 import YoutubeUrlInput from "./YoutubeUrlInput";
 import getArrayOfPlaylistItemIds from "../utils/getArrayOfPlaylistItemIds";
 import axios from "axios";
+import checkAccessTokens from "../utils/checkAccessTokens";
 
 interface YoutubeSearchPageProps {
   playlistSent: boolean;
@@ -68,6 +69,7 @@ function YoutubeSearchPage({
 
   const submitPlaylist = async () => {
     setLoading(true);
+    await checkAccessTokens();
     const access_token = localStorage.getItem("access_token");
     const headers = {
       headers: {
