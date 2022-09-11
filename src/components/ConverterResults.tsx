@@ -17,6 +17,7 @@ interface ConverterResultsProps {
   >;
   userID: string | null;
   setPlaylistSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ConverterResults({
@@ -25,7 +26,7 @@ function ConverterResults({
   spotifySearchResults,
   setSpotifySearchResults,
   userID,
-  setPlaylistSubmitted,
+  setPlaylistSubmitted, setLoading
 }: ConverterResultsProps): JSX.Element {
   const [playlistName, setPlaylistName] = useState<string>("My new playlist");
   const [playlistDescription, setPlaylistDescription] = useState<string>(
@@ -43,6 +44,7 @@ function ConverterResults({
   };
 
   const makePublicPlaylist = async () => {
+    setLoading(true);
     const access_token = localStorage.getItem("access_token");
     const headers = {
       headers: {
@@ -66,6 +68,7 @@ function ConverterResults({
       await addImageToPlaylist(playlistImage, playlistID);
       await addTracksToPlaylist(spotifySearchResults, playlistID);
       setSpotifyPlaylistUrl(response.data.external_urls.spotify);
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }

@@ -8,14 +8,16 @@ interface SpotifySignInProps {
   setSpotifyAuthorised: React.Dispatch<React.SetStateAction<boolean>>;
   userID: string | null;
   setUserID: React.Dispatch<React.SetStateAction<string | null>>;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function SpotifySignIn({
   setSpotifyAuthorised,
   userID,
-  setUserID,
+  setUserID, setLoading
 }: SpotifySignInProps): JSX.Element {
   useEffect(() => {
+    setLoading(true);
     const handlePageLoad = async () => {
       if (window.location.search.length > 0) {
         const authorization = getAuthorization();
@@ -26,12 +28,15 @@ function SpotifySignIn({
             setUserID(user);
             console.log(user);
             setSpotifyAuthorised(true);
+            setLoading(false);
           } else {
             console.log(authorization.error);
           }
         } else {
           console.log("authorization is null");
         }
+      } else {
+        setLoading(false);
       }
     };
     handlePageLoad();
@@ -40,6 +45,7 @@ function SpotifySignIn({
 
   const handleLogin = async () => {
     await requestAuthorization();
+    setLoading(true);
   };
 
   return (

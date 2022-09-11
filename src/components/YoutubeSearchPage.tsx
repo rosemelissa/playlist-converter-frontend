@@ -19,6 +19,7 @@ interface YoutubeSearchPageProps {
   setSpotifySearchResults: React.Dispatch<
     React.SetStateAction<IYoutubeAndSpotify[]>
   >;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function YoutubeSearchPage({
@@ -27,7 +28,7 @@ function YoutubeSearchPage({
   youtubePlaylistUrl,
   setYoutubePlaylistUrl,
   setPlaylistSubmitted,
-  setSpotifySearchResults,
+  setSpotifySearchResults, setLoading
 }: YoutubeSearchPageProps): JSX.Element {
   const [playlistItems, setPlaylistItems] = useState<TitleAndImg[]>([]);
 
@@ -55,15 +56,18 @@ function YoutubeSearchPage({
       }
 
       setPlaylistSent(false);
+      setLoading(false);
     };
 
     if (playlistSent) {
+      setLoading(true);
       getPlaylistFromYoutube();
     }
   // eslint-disable-next-line
   }, [playlistSent]);
 
   const submitPlaylist = async () => {
+    setLoading(true);
     const access_token = localStorage.getItem("access_token");
     const headers = {
       headers: {
@@ -91,6 +95,7 @@ function YoutubeSearchPage({
     console.log("resultsofthissearch " + resultsOfThisSearch);
     setSpotifySearchResults([...resultsOfThisSearch]);
     setPlaylistSubmitted(true);
+    setLoading(false);
   };
 
   return (
