@@ -151,7 +151,7 @@ export interface ISpotifyTrack {
   is_local: boolean;
   name: string;
   popularity: number;
-  preview_url: string|null;
+  preview_url: string | null;
   track_number: number;
   type: string;
   uri: string;

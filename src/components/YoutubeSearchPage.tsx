@@ -29,7 +29,8 @@ function YoutubeSearchPage({
   youtubePlaylistUrl,
   setYoutubePlaylistUrl,
   setPlaylistSubmitted,
-  setSpotifySearchResults, setLoading
+  setSpotifySearchResults,
+  setLoading,
 }: YoutubeSearchPageProps): JSX.Element {
   const [playlistItems, setPlaylistItems] = useState<TitleAndImg[]>([]);
 
@@ -39,13 +40,14 @@ function YoutubeSearchPage({
         const playlistId = getPlaylistIdFromUrl(youtubePlaylistUrl);
         if (playlistId) {
           try {
-            const arrayOfPlaylistItems: TitleAndImg[]|null = await getArrayOfPlaylistItemIds(playlistId);
+            const arrayOfPlaylistItems: TitleAndImg[] | null =
+              await getArrayOfPlaylistItemIds(playlistId);
             if (arrayOfPlaylistItems) {
               setPlaylistItems(arrayOfPlaylistItems);
             } else {
-                window.alert(
-                  "Could not find a youtube playlist with that url. Check that the playlist you are trying to use is public"
-                );
+              window.alert(
+                "Could not find a youtube playlist with that url. Check that the playlist you are trying to use is public"
+              );
             }
           } catch (error) {
             console.error(error);
@@ -53,7 +55,6 @@ function YoutubeSearchPage({
         }
       } catch (error) {
         console.error(error);
-        
       }
 
       setPlaylistSent(false);
@@ -64,7 +65,7 @@ function YoutubeSearchPage({
       setLoading(true);
       getPlaylistFromYoutube();
     }
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [playlistSent]);
 
   const submitPlaylist = async () => {

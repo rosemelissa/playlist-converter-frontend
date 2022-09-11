@@ -14,7 +14,8 @@ interface SpotifySignInProps {
 function SpotifySignIn({
   setSpotifyAuthorised,
   userID,
-  setUserID, setLoading
+  setUserID,
+  setLoading,
 }: SpotifySignInProps): JSX.Element {
   useEffect(() => {
     setLoading(true);
@@ -40,7 +41,7 @@ function SpotifySignIn({
       }
     };
     handlePageLoad();
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   const handleLogin = async () => {

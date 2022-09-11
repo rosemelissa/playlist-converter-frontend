@@ -27,7 +27,8 @@ function ConverterResults({
   spotifySearchResults,
   setSpotifySearchResults,
   userID,
-  setPlaylistSubmitted, setLoading
+  setPlaylistSubmitted,
+  setLoading,
 }: ConverterResultsProps): JSX.Element {
   const [playlistName, setPlaylistName] = useState<string>("My new playlist");
   const [playlistDescription, setPlaylistDescription] = useState<string>(
@@ -119,39 +120,61 @@ function ConverterResults({
           <label htmlFor="playlist-description">Playlist description</label>
           <textarea
             id="playlist-description"
-            name="playlist-description" rows={4} cols={50}
+            name="playlist-description"
+            rows={4}
+            cols={50}
             onChange={(e) => setPlaylistDescription(e.target.value)}
             value={playlistDescription}
           />
         </div>
-        {playlistImage && <img id="playlist-image" src={URL.createObjectURL(playlistImage)} alt={playlistImage.name}/>}
+        {playlistImage && (
+          <img
+            id="playlist-image"
+            src={URL.createObjectURL(playlistImage)}
+            alt={playlistImage.name}
+          />
+        )}
         <div className="image-upload">
-          <label htmlFor="cover">Choose a cover picture (max size 256kb):</label>
+          <label htmlFor="cover">
+            Choose a cover picture (max size 256kb):
+          </label>
           <input
             type="file"
             id="cover"
             accept="image/png, image/jpeg"
             onChange={(e) => uploadPlaylistImage(e)}
           />
-          {playlistImage && <button className="dark" type="button" onClick={() => setPlaylistImage(null)}>Remove image</button>}
+          {playlistImage && (
+            <button
+              className="dark"
+              type="button"
+              onClick={() => setPlaylistImage(null)}
+            >
+              Remove image
+            </button>
+          )}
         </div>
-        <button id="make-playlist" className="dark" type="button" onClick={makePublicPlaylist}>
+        <button
+          id="make-playlist"
+          className="dark"
+          type="button"
+          onClick={makePublicPlaylist}
+        >
           Make public playlist from these results
         </button>
-        
       </div>
 
       <h1>Results of the search:</h1>
       <div className="converter-search-results">
-      {spotifySearchResults.map((searchResult, i) => (
-        <SpotifyTrackListing
-          spotifySearchResults={spotifySearchResults}
-          setSpotifySearchResults={setSpotifySearchResults}
-          thisTrack={searchResult}
-          key={i}
-          indexOfThisTrack={i}
-        />
-      ))}
+        {spotifySearchResults.map((searchResult, i) => (
+          <SpotifyTrackListing
+            spotifySearchResults={spotifySearchResults}
+            setSpotifySearchResults={setSpotifySearchResults}
+            thisTrack={searchResult}
+            key={i}
+            indexOfThisTrack={i}
+          />
+        ))}
       </div>
     </>
   );

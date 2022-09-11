@@ -84,23 +84,26 @@ function SearchForDifferentTrack({
         Search
       </button>
       <div className="search-new-tracks">
-      {searchResults &&
-        searchResults.map((thisTrack, i) => (
-          <div className={`new-spotify-search-result ${thisTrack.id === newTrack?.id && "selected-track"}`}
-            key={i}
-            onClick={() => {
-              newTrack && newTrack.id === thisTrack.id
-                ? setNewTrack(null)
-                : setNewTrack(thisTrack);
-            }}
-          >
-            <h3>Title: {thisTrack.name}</h3>
-            <p>Artists: {thisTrack.artists.map((artist) => artist.name)}</p>
-            <p>Length: {formatDuration(thisTrack.duration_ms)}</p>
-            <img src={thisTrack.album.images[0].url} alt={thisTrack.name} />
-          </div>
-        ))}
-        </div>
+        {searchResults &&
+          searchResults.map((thisTrack, i) => (
+            <div
+              className={`new-spotify-search-result ${
+                thisTrack.id === newTrack?.id && "selected-track"
+              }`}
+              key={i}
+              onClick={() => {
+                newTrack && newTrack.id === thisTrack.id
+                  ? setNewTrack(null)
+                  : setNewTrack(thisTrack);
+              }}
+            >
+              <h3>Title: {thisTrack.name}</h3>
+              <p>Artists: {thisTrack.artists.map((artist) => artist.name)}</p>
+              <p>Length: {formatDuration(thisTrack.duration_ms)}</p>
+              <img src={thisTrack.album.images[0].url} alt={thisTrack.name} />
+            </div>
+          ))}
+      </div>
 
       <button
         type="button"

@@ -36,30 +36,38 @@ function SpotifyTrackListing({
   if (thisTrack.spotify) {
     return (
       <div className="spotify-track-listing">
-      <div className="original-search-results">
-        <div className="youtube-search-result">
+        <div className="original-search-results">
+          <div className="youtube-search-result">
             <h3>Youtube: {thisTrack.youtube.title}</h3>
             <img src={thisTrack.youtube.img} alt={thisTrack.youtube.title} />
-        </div>
-        <div className="spotify-search-result">
+          </div>
+          <div className="spotify-search-result">
             <h3>Title: {thisTrack.spotify.name}</h3>
             <p>Artists: {formatArtists(thisTrack.spotify.artists)}</p>
             <p>Length: {formatDuration(thisTrack.spotify.duration_ms)}</p>
             <img
-            src={thisTrack.spotify.album.images[0].url}
-            alt={thisTrack.spotify.name}
+              src={thisTrack.spotify.album.images[0].url}
+              alt={thisTrack.spotify.name}
             />
-        </div>
-        <div className="spotify-track-listing-buttons">
-        <button className="dark" type="button" onClick={removeTrackFromPlaylist}>
-          Remove from playlist
-        </button>
-        {mode === "display" && (
-          <button className="dark" type="button" onClick={() => setMode("search")}>
-            Search for a different track
-          </button>
-        )}
-        </div>
+          </div>
+          <div className="spotify-track-listing-buttons">
+            <button
+              className="dark"
+              type="button"
+              onClick={removeTrackFromPlaylist}
+            >
+              Remove from playlist
+            </button>
+            {mode === "display" && (
+              <button
+                className="dark"
+                type="button"
+                onClick={() => setMode("search")}
+              >
+                Search for a different track
+              </button>
+            )}
+          </div>
         </div>
         {mode === "search" && (
           <SearchForDifferentTrack
@@ -78,7 +86,11 @@ function SpotifyTrackListing({
         <p>Title: {thisTrack.youtube.title}</p>
         <img src={thisTrack.youtube.img} alt={thisTrack.youtube.title} />
         {mode === "display" && (
-          <button className="dark" type="button" onClick={() => setMode("search")}>
+          <button
+            className="dark"
+            type="button"
+            onClick={() => setMode("search")}
+          >
             Manually search for track
           </button>
         )}
