@@ -36,13 +36,22 @@ function YoutubeSearchPage({
       try {
         const playlistId = getPlaylistIdFromUrl(youtubePlaylistUrl);
         if (playlistId) {
-          setPlaylistItems(await getArrayOfPlaylistItemIds(playlistId));
+          try {
+            const arrayOfPlaylistItems: TitleAndImg[]|null = await getArrayOfPlaylistItemIds(playlistId);
+            if (arrayOfPlaylistItems) {
+              setPlaylistItems(arrayOfPlaylistItems);
+            } else {
+                window.alert(
+                  "Could not find a youtube playlist with that url. Check that the playlist you are trying to use is public"
+                );
+            }
+          } catch (error) {
+            console.error(error);
+          }
         }
       } catch (error) {
         console.error(error);
-        window.alert(
-          "Could not find a youtube playlist with that url. Check that the playlist you are trying to use is public"
-        );
+        
       }
 
       setPlaylistSent(false);

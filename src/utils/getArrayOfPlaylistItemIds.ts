@@ -7,7 +7,7 @@ import {
 
 async function getArrayOfPlaylistItemIds(
   playlistId: string
-): Promise<TitleAndImg[]> {
+): Promise<TitleAndImg[]|null> {
   const YOUR_API_KEY = process.env.REACT_APP_YT_API_KEY;
 
   const titleAndImgArr: TitleAndImg[] = [];
@@ -45,6 +45,7 @@ async function getArrayOfPlaylistItemIds(
     }
   } catch (error) {
     console.error(error);
+    return null;
   }
 
   return titleAndImgArr;
