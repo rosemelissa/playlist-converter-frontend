@@ -49,7 +49,7 @@ function SpotifySignIn({
   };
 
   return (
-    <>
+    <div id="spotify-sign-in">
       <h1>Welcome to the Youtube to Spotify converter!</h1>
       <p>
         {" "}
@@ -57,10 +57,10 @@ function SpotifySignIn({
         playlist
       </p>
       <p>To get started, log in with Spotify</p>
-      <button type="button" onClick={handleLogin}>
+      <button className="light" type="button" onClick={handleLogin}>
         Log into Spotify
       </button>
-    </>
+    </div>
   );
 }
 

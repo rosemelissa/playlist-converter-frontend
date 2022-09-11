@@ -77,7 +77,7 @@ function ConverterResults({
   return (
     <>
       {spotifyPlaylistUrl && (
-        <>
+        <div className="playlist-created">
           <p>
             Playlist created! Link:{" "}
             <a
@@ -90,6 +90,7 @@ function ConverterResults({
           </p>
           <button
             type="button"
+            className="light"
             onClick={() => {
               setPlaylistSent(false);
               setPlaylistSubmitted(false);
@@ -100,33 +101,42 @@ function ConverterResults({
           >
             Search for a different youtube playlist
           </button>
-        </>
+        </div>
       )}
       <div className="make-public-playlist">
-        <input
-          type="text"
-          id="playlist-name"
-          onChange={(e) => setPlaylistName(e.target.value)}
-          value={playlistName}
-        />
-        <label htmlFor="playlist-name">Playlist name</label>
-        <input
-          type="text"
-          id="playlist-description"
-          onChange={(e) => setPlaylistDescription(e.target.value)}
-          value={playlistDescription}
-        />
-        <label htmlFor="playlist-description">Playlist description</label>
-        <label htmlFor="cover">Choose a cover picture (max size 256kb):</label>
-        <input
-          type="file"
-          id="cover"
-          accept="image/png, image/jpeg"
-          onChange={(e) => uploadPlaylistImage(e)}
-        />
-        <button type="button" onClick={makePublicPlaylist}>
+        <div className="playlist-name">
+          <label htmlFor="playlist-name">Playlist name</label>
+          <input
+            type="text"
+            id="playlist-name"
+            onChange={(e) => setPlaylistName(e.target.value)}
+            value={playlistName}
+          />
+        </div>
+        <div className="playlist-description">
+          <label htmlFor="playlist-description">Playlist description</label>
+          <textarea
+            id="playlist-description"
+            name="playlist-description" rows={4} cols={50}
+            onChange={(e) => setPlaylistDescription(e.target.value)}
+            value={playlistDescription}
+          />
+        </div>
+        {playlistImage && <img id="playlist-image" src={URL.createObjectURL(playlistImage)} alt={playlistImage.name}/>}
+        <div className="image-upload">
+          <label htmlFor="cover">Choose a cover picture (max size 256kb):</label>
+          <input
+            type="file"
+            id="cover"
+            accept="image/png, image/jpeg"
+            onChange={(e) => uploadPlaylistImage(e)}
+          />
+          {playlistImage && <button className="dark" type="button" onClick={() => setPlaylistImage(null)}>Remove image</button>}
+        </div>
+        <button id="make-playlist" className="dark" type="button" onClick={makePublicPlaylist}>
           Make public playlist from these results
         </button>
+        
       </div>
 
       <h1>Results of the search:</h1>

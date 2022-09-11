@@ -51,11 +51,11 @@ function SpotifyTrackListing({
             />
         </div>
         <div className="spotify-track-listing-buttons">
-        <button type="button" onClick={removeTrackFromPlaylist}>
+        <button className="dark" type="button" onClick={removeTrackFromPlaylist}>
           Remove from playlist
         </button>
         {mode === "display" && (
-          <button type="button" onClick={() => setMode("search")}>
+          <button className="dark" type="button" onClick={() => setMode("search")}>
             Search for a different track
           </button>
         )}
@@ -78,7 +78,7 @@ function SpotifyTrackListing({
         <p>Title: {thisTrack.youtube.title}</p>
         <img src={thisTrack.youtube.img} alt={thisTrack.youtube.title} />
         {mode === "display" && (
-          <button type="button" onClick={() => setMode("search")}>
+          <button className="dark" type="button" onClick={() => setMode("search")}>
             Manually search for track
           </button>
         )}

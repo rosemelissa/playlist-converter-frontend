@@ -107,7 +107,7 @@ function YoutubeSearchPage({
       />
       {playlistItems.length > 0 && (
         <>
-          <button type="button" onClick={submitPlaylist}>
+          <button className="light" type="button" onClick={submitPlaylist}>
             Use this playlist
           </button>
           <YoutubePlaylistListing playlistItems={playlistItems} />

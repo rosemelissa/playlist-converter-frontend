@@ -22,12 +22,13 @@ function YoutubeUrlInput({
   return (
     <>
       <input
+      id="youtube-url"
         type="text"
         placeholder="Enter Youtube Playlist URL"
         value={youtubePlaylistUrl}
         onChange={(e) => setYoutubePlaylistUrl(e.target.value)}
       />
-      <button type="button" onClick={handleSearch}>
+      <button className="light" type="button" onClick={handleSearch}>
         Search
       </button>
     </>

@@ -76,9 +76,9 @@ function SearchForDifferentTrack({
   };
 
   return (
-    <>
+    <div className="new-spotify-search-results">
       <input type="text" onChange={(e) => setSearchTerm(e.target.value)} />
-      <button type="button" onClick={searchForNewTracks}>
+      <button className="dark" type="button" onClick={searchForNewTracks}>
         Search
       </button>
       <div className="search-new-tracks">
@@ -102,6 +102,7 @@ function SearchForDifferentTrack({
 
       <button
         type="button"
+        className="dark"
         onClick={() => {
           setMode("display");
         }}
@@ -110,11 +111,11 @@ function SearchForDifferentTrack({
       </button>
 
       {newTrack && (
-        <button type="button" onClick={useThisTrack}>
+        <button className="dark" type="button" onClick={useThisTrack}>
           Use this track
         </button>
       )}
-    </>
+    </div>
   );
 }
 

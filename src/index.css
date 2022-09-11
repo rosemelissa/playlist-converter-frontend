@@ -1,19 +1,19 @@
 html body {
-  color: black;
+  color: white;
   margin-left: 20px;
   margin-top: 20px;
-  background-color: white;
+  background-color: #311847;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .loading-screen {
-    width: 100%;
-    height: 100vh;
+    width: 97%;
+    height: 97vh;
     position: fixed;
     background: rgba(0, 0, 0, 0.834);
     z-index: 1;
-    margin-top: 0px;
-    margin-left: 0px;
+    margin: 0px 20px 20px 0px;
     color: white;
 }
 
@@ -21,12 +21,149 @@ img {
   width: 200px;
 }
 
+button {
+    border: 0px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px;
+    margin: 2px;
+}
+
+button.light {
+    background-color: #ec4067;
+    font-size: 16px;
+}
+
+button.dark {
+    background-color: #311847;
+    font-size: 16px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #e09f7d;
+}
+
+input {
+    border: 0px solid white;
+    margin: 2px;
+    padding: 3px;
+    font-size: 16px;
+}
+
+textarea {
+    border: 0px solid white;
+    margin: 2px;
+    padding: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    width: 400px;
+}
+
+#spotify-sign-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#youtube-url {
+    width: 500px;
+}
+
+#youtube-playlist-listing {
+    margin-top: 20px;
+}
+
+.make-public-playlist {
+    display: grid;
+    width: 1060px;
+    height: 150px;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    grid-template-columns: 550px 195px 315px;
+    grid-template-rows: 30px 60px 60px;
+    grid-template-areas:
+    "playlist-name playlist-image image-upload"
+    "playlist-description playlist-image image-upload"
+    "playlist-description playlist-image make-playlist";
+    color: white;
+    background-color: #a01a7d;
+}
+
+.playlist-name {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    grid-area: playlist-name;
+}
+
+.playlist-description {
+    display: flex;
+    flex-direction: row;
+    grid-area: playlist-description;
+}
+
+#playlist-image {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    grid-area: playlist-image;
+    justify-self: center;
+}
+
+.playlist-name label {
+    width: 125px;
+}
+
+.playlist-description label {
+    width: 125px;
+}
+
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    grid-area: image-upload;
+    align-items: flex-start;
+}
+
+input[type="file" i] {
+    margin-left: 0px;
+    padding: 0px;
+}
+
+input::file-selector-button {
+    background-color: #311847;
+    font-size: 16px;
+    color: white;
+    border: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px;
+    margin: 2px;
+}
+
+input::file-selector-button:hover {
+    cursor: pointer;
+    background-color: #e09f7d;
+}
+
+#make-playlist {
+    grid-area: make-playlist;
+    height: fit-content;
+    align-self: flex-end;
+    width: fit-content;
+    
+}
+
 .converter-search-results {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     padding: 10px;
-    background-color: #45ada8;
+    background-color: #a01a7d;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
@@ -39,7 +176,7 @@ img {
     padding: 5px;
     margin: 10px;
     max-width: fit-content;
-    background-color: white;
+    background-color: #ec4067;
     align-items: center;
 }
 
@@ -74,6 +211,10 @@ img {
     margin-bottom: 2px;
 }
 
+.new-spotify-search-results{
+    margin-top: 10px;
+}
+
 .new-spotify-search-result {
     display: flex;
     flex-direction: column;
@@ -82,15 +223,17 @@ img {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    margin-left: 5px;
+    margin: 5px 0px 5px 5px;
+    background-color: #ef5d60;
 }
 
 .new-spotify-search-result:hover {
-    background-color: lightgray;
+    cursor: pointer;
+    background-color: #e09f7d;
 }
 
 .new-spotify-search-result.selected-track{
-    border: solid 5px #45ada8;
+    border: solid 5px #e09f7d;
     padding: 0px 0px;
 }
 
@@ -120,4 +263,12 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+}
+
+.playlist-created {
+    margin: 20px;
+}
+
+a {
+    color: white;
 }
