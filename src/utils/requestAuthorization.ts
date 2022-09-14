@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import { baseUrl } from "../constants";
 import generateCodeChallenge from "./authorizationUtils/generateCodeChallenge";
 import generateRandomString from "./authorizationUtils/generateRandomString";
 
@@ -9,7 +10,6 @@ async function requestAuthorization(): Promise<void> {
   dotenv.config();
 
   const CLIENTID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-  const baseUrl = "http://localhost:3000";
 
   const codeVerifier = generateRandomString(64);
   const codeChallenge = await generateCodeChallenge(codeVerifier);

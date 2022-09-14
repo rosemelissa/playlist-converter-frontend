@@ -1,5 +1,6 @@
 import axios from "axios";
 import dotenv from "dotenv";
+import { baseUrl } from "../constants";
 import ISpotifyAPI from "./interfaces";
 dotenv.config();
 /**
@@ -8,7 +9,6 @@ dotenv.config();
 async function requestTokens(code: string): Promise<void> {
   const CLIENTID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
   const CLIENTSECRET = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
-  const baseUrl = "http://localhost:3000";
 
   const code_verifier = localStorage.getItem("code_verifier");
   let body = `grant_type=authorization_code`;

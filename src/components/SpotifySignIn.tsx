@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { baseUrl } from "../constants";
 import getAuthorization from "../utils/getAuthorization";
 import requestAuthorization from "../utils/requestAuthorization";
 import requestTokens from "../utils/requestTokens";
@@ -29,6 +30,7 @@ function SpotifySignIn({
             setUserID(user);
             setSpotifyAuthorised(true);
             setLoading(false);
+            window.history.pushState("", "", `${baseUrl}`);
           } else {
             // console.log(authorization.error);
           }

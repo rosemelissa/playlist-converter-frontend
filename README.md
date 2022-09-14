@@ -4,7 +4,9 @@ Easily convert your YouTube playlists into Spotify playlists! Try the app here (
 
 ## Running locally
 
-Clone the repo and run `yarn` to install dependencies
+Clone the repo and run `yarn` to install dependencies.
+
+Replace the values in /src/constants.ts with whatever URLs you will use for your deployed/local React app.
 
 ### Set up YouTube API
 
