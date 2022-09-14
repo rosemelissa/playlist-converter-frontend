@@ -1,6 +1,6 @@
 # YouTube-to-Spotify Playlist Converter
 
-Easily convert your YouTube playlists into Spotify playlists! Try the app <a href="https://rosemelissa-playlist-converter.netlify.app/">here</a> (note: the app is currently in developer mode and awaiting approval from Spotify. Until it gains approval, your Spotify account must be whitelisted manually by me in order to use the app.)
+Easily convert your YouTube playlists into Spotify playlists! <a href="https://rosemelissa-playlist-converter.netlify.app/">Try the app here</a> (note: the app is currently in developer mode and awaiting approval from Spotify. Until it gains approval, your Spotify account must be whitelisted manually by me in order to use the app.)
 
 ## Running locally
 
