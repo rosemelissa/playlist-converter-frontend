@@ -66,7 +66,6 @@ function ConverterResults({
         data,
         headers
       );
-      console.log(response);
       const playlistID: string = response.data.id;
       await addImageToPlaylist(playlistImage, playlistID);
       await addTracksToPlaylist(spotifySearchResults, playlistID);

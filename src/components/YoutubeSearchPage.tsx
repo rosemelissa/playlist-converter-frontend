@@ -85,7 +85,6 @@ function YoutubeSearchPage({
           `https://api.spotify.com/v1/search?q=name:${item.title}&type=track&limit=1`,
           headers
         );
-        console.log(searchResults.data.tracks.items);
         resultsOfThisSearch.push({
           youtube: item,
           spotify: searchResults.data.tracks.items[0],
@@ -95,7 +94,6 @@ function YoutubeSearchPage({
         resultsOfThisSearch.push({ youtube: item, spotify: null });
       }
     }
-    console.log("resultsofthissearch " + resultsOfThisSearch);
     setSpotifySearchResults([...resultsOfThisSearch]);
     setPlaylistSubmitted(true);
     setLoading(false);

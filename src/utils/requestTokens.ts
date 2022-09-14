@@ -31,7 +31,6 @@ async function requestTokens(code: string): Promise<void> {
     body,
     headers
   );
-  console.log(result);
 
   const access_token = result.data.access_token;
   const refresh_token = result.data.refresh_token;

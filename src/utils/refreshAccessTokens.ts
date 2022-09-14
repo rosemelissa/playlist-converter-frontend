@@ -22,7 +22,7 @@ async function refreshAccessToken(): Promise<void> {
       body,
       headers
     );
-    console.log(result + "refreshing tokens");
+    // console.log(result + "refreshing tokens");
 
     const new_access_token = result.data.access_token;
     const new_refresh_token = result.data.refresh_token;

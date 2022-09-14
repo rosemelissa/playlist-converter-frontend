@@ -31,15 +31,14 @@ async function sendImageToPlaylistAPI(
         "Content-Type": "image/jpeg",
       },
     }; //body: imgFile
-    console.log(imgFile);
     const body = imgFile;
 
-    const response = await axios.put(
+    await axios.put(
       `https://api.spotify.com/v1/playlists/${playlistID}/images`,
       body,
       headers
     );
-    console.log("posting image to playlist" + response);
+    // console.log("posting image to playlist" + response);
   }
 }
 

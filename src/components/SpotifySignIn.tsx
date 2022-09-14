@@ -27,14 +27,13 @@ function SpotifySignIn({
             await requestTokens(authorization.code);
             const user = await requestUser();
             setUserID(user);
-            console.log(user);
             setSpotifyAuthorised(true);
             setLoading(false);
           } else {
-            console.log(authorization.error);
+            // console.log(authorization.error);
           }
         } else {
-          console.log("authorization is null");
+          // console.log("authorization is null");
         }
       } else {
         setLoading(false);

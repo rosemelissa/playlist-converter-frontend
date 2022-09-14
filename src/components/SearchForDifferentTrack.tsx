@@ -44,12 +44,10 @@ function SearchForDifferentTrack({
         `https://api.spotify.com/v1/search?q=name:${searchTerm}&type=track&limit=5`,
         headers
       );
-      console.log(searchResults.data.tracks.items);
       resultsOfThisSearch = [...searchResults.data.tracks.items];
     } catch (error) {
       console.error(error);
     }
-    console.log("resultsofthissearch " + resultsOfThisSearch);
     setSearchResults([...resultsOfThisSearch]);
   };
 
@@ -58,17 +56,14 @@ function SearchForDifferentTrack({
       (result, i) => {
         if (newTrack) {
           if (i === indexOfThisTrack) {
-            console.log("found a match");
             return {
               youtube: { ...result.youtube },
               spotify: { ...newTrack },
             };
           } else {
-            console.log("not a macth");
             return result;
           }
         } else {
-          console.log("not a result");
           return result;
         }
       }

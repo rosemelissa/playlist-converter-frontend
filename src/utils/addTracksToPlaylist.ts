@@ -38,12 +38,12 @@ async function addTracksToPlaylist(
         const data = {
           uris: uriArray,
         };
-        const response = await axios.post(
+        await axios.post(
           `https://api.spotify.com/v1/playlists/${playlistID}/tracks`,
           data,
           headers
         );
-        console.log("posting tracks to playlist" + response);
+        // console.log("posting tracks to playlist" + response);
       }
     }
   }
