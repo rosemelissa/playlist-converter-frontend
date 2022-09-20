@@ -46,7 +46,7 @@ button {
   border: 0px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 3px;
+  padding: 7px 8px;
   margin: 2px;
 }
 
@@ -91,6 +91,7 @@ textarea {
 
 #youtube-url {
   width: 500px;
+  height: 26px;
 }
 
 #youtube-playlist-listing {
@@ -151,9 +152,28 @@ textarea {
   align-items: flex-start;
 }
 
+#fake-upload-button {
+  border: 0px;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0px 8px;
+  margin: 20px 2px 5px 2px;
+  background-color: #311847;
+  font-size: 16px;
+}
+
+#fake-upload-button:hover {
+  cursor: pointer;
+  background-color: #e09f7d;
+}
+
+
 input[type="file" i] {
   margin-left: 0px;
   padding: 0px;
+  overflow: hidden;
+  width: 0px;
 }
 
 input::file-selector-button {
@@ -234,6 +254,10 @@ h3 {
 
 .new-spotify-search-results {
   margin-top: 10px;
+}
+
+.new-spotify-search-results input {
+  height: 26px;
 }
 
 .new-spotify-search-result {

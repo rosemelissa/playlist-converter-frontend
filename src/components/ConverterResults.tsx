@@ -41,7 +41,14 @@ function ConverterResults({
 
   const uploadPlaylistImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setPlaylistImage(e.target.files[0]);
+      if (e.target.files[0]) {
+        if (e.target.files[0].size >= (256*1024)) {
+          window.alert("File is too big");
+        } else {
+          setPlaylistImage(e.target.files[0]);
+        }
+      }
+      
     }
   };
 
@@ -134,15 +141,16 @@ function ConverterResults({
           />
         )}
         <div className="image-upload">
-          <label htmlFor="cover">
-            Choose a cover picture (max size 256kb):
-          </label>
+        Choose a cover picture (max size 256kb):
+          <label id="fake-upload-button" htmlFor="cover">
+            Upload file
           <input
             type="file"
             id="cover"
-            accept="image/png, image/jpeg"
+            accept="image/jpeg"
             onChange={(e) => uploadPlaylistImage(e)}
           />
+          </label>
           {playlistImage && (
             <button
               className="dark"
