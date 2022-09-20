@@ -33,9 +33,11 @@ function SpotifySignIn({
             window.history.pushState("", "", `${baseUrl}`);
           } else {
             // console.log(authorization.error);
+            setLoading(false);
           }
         } else {
           // console.log("authorization is null");
+          setLoading(false);
         }
       } else {
         setLoading(false);

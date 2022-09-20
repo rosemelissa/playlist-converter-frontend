@@ -6,7 +6,7 @@ interface LoadingProps {
 function Loading({ loading, setLoading }: LoadingProps): JSX.Element {
   return (
     <div className="loading-screen">
-      <p>Loading...</p>
+      <div className="spinner"></div>
     </div>
   );
 }
