@@ -11,8 +11,8 @@ html body {
   width: 97%;
   height: 97vh;
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   background: rgba(0, 0, 0, 0.834);
   z-index: 1;
@@ -31,10 +31,10 @@ html body {
 
 @keyframes spin-anim {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -167,7 +167,6 @@ textarea {
   cursor: pointer;
   background-color: #e09f7d;
 }
-
 
 input[type="file" i] {
   margin-left: 0px;
