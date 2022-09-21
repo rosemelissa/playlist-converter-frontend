@@ -1,12 +1,15 @@
 # YouTube-to-Spotify Playlist Converter
 
-Easily convert your YouTube playlists into Spotify playlists! <a href="https://rosemelissa-playlist-converter.netlify.app/">Try the app here</a> (note: the app is currently in developer mode and awaiting approval from Spotify. Until it gains approval, your Spotify account must be whitelisted manually by me in order to use the app.)
+Easily convert your YouTube playlists into Spotify playlists!
+[Video demo here](https://www.loom.com/share/35c5c623dd714c4eb2704a3524571e9f)
+[Try the app here](https://rosemelissa-playlist-converter.netlify.app/)
+(note: this app is currently in Spotify's development mode, which means that only users manually whitelisted by me can use it. Until the app gains approval from Spotify to be shipped to general audiences, feel free to message me if you would like me to whitelist your Spotify account.)
 
 ## Running locally
 
 Clone the repo and run `yarn` to install dependencies.
 
-Replace the values in /src/constants.ts with whatever URLs you will use for your deployed/local React app.
+Replace the values in `/src/constants.ts` with whatever URLs you will use for your deployed/local React app.
 
 ### Set up YouTube API
 
@@ -24,7 +27,7 @@ Set the values of `REACT_APP_SPOTIFY_CLIENT_ID` and `REACT_APP_SPOTIFY_CLIENT_SE
 
 ### Running the app
 
-Run the app with yarn start
+Run the app with `yarn start`
 
 ## Credits and references
 
